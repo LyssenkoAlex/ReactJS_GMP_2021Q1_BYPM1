@@ -7,7 +7,7 @@
     "start": "webpack serve --config build-utils/webpack.config.js --env env=dev",
     "build": "webpack --config build-utils/webpack.config.js --env env=prod",
     "build:analyze": "npm run build -- --env addon=bundleanalyze",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jest --config ./jest.config.json"
   },
   "repository": {
     "type": "git",
@@ -43,7 +43,8 @@
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3"
+    "webpack-merge": "^5.7.3",
+    "jest": "^26.6.3"
   },
   "dependencies": {
     "jest": "^26.6.3",
