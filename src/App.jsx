@@ -1,14 +1,10 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import './style/style.css'
+import PropTypes from 'prop-types';
 
+const App = ({ title }) => <div>{title}</div>;
 
-const App = () => {
-    return (
-            <div>
-                <h1>Hello React</h1>
-            </div>
-    )
-}
+App.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
-ReactDom.render(<App/>, document.getElementById("root"))
+export default App;
