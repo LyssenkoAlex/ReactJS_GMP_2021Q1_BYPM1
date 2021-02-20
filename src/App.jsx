@@ -1,10 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import './sass/style.scss';
+import Main from './components/Main';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-const App = ({ title }) => <div>{title}</div>;
-
-App.propTypes = {
-  title: PropTypes.string.isRequired,
-};
+const App = () => (
+  <div className="container">
+    <Header />
+    <Main />
+    <Footer />
+  </div>
+);
 
 export default App;
