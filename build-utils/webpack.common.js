@@ -26,6 +26,15 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(woff2?|ttf|eot|jpg|jpeg|png|gif|webp)(\?.*)?$/i,
+        // test: /\.(jpg|png|webp)$/,
+        use: [
+          {
+            loader: 'url-loader', // Or `url-loader` or your other loader
+          },
+        ],
+      }
     ],
   },
   resolve: {
