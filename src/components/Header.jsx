@@ -1,7 +1,4 @@
 import React from "react";
-import backdrop_92 from "../assets/img/backdrop-92.webp";
-import backdrop_1280 from "../assets/img/backdrop-1280.webp";
-import backdrop_1920 from "../assets/img/backdrop-1920.webp";
 
 
 const Header = () => {
