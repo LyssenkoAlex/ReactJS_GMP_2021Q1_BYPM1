@@ -1,5 +1,9 @@
-import React from 'react';
+import React from "react";
 
-const Main = () => <main>List of movies</main>;
+const person = null;
+
+const Main = () => {
+  return (<main>List of movies{person.name}</main>);
+};
 
 export default Main;

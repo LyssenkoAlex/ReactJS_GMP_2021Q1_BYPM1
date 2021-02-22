@@ -1,6 +1,7 @@
 html {
   font-size: 10px;
   min-width: $content-width;
+  background-color: $black;
 }
 
 button {
@@ -22,6 +23,13 @@ button {
   margin-left: 12px;
 
 }
+button:hover {
+  transform: scale(1.08);
+}
+button:active {
+  transform: scale(0.98);
+}
+
 button[role='add_movie'] {
   background-color: rgba(255,255,255,0.17);
   color: $red;

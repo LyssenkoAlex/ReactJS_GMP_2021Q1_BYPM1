@@ -1,0 +1,101 @@
+nav {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+nav > ul > li {
+  display: inline;
+  //margin-left: 20px;
+  font-size: large;
+}
+
+li {
+  color: #FFFFFF;
+  border-bottom: 2px $grey solid;
+  padding-left: 20px;
+
+  &:hover {
+    border-bottom: 2px $red solid;
+    padding-left: 0;
+    margin-left: 20px;
+  }
+}
+
+.dropdown-container {
+  width: 250px;
+  position: relative;
+}
+
+select {
+  width: 100%;
+  height: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0;
+  background-color: $dark-grey;
+  border: none;
+  border-bottom: 2px solid #962d22;
+  color: $white;
+  appearance: none;
+  padding: 10px 38px 10px 10px;
+  font-size: 25px;
+  transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+/* For IE <= 11 */
+select::-ms-expand {
+  display: none;
+}
+
+.select-icon {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  width: 30px;
+  height: 36px;
+  pointer-events: none;
+  padding-left: 5px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transform: rotate(180deg);
+  font-size: 20px;
+  color: $red;
+}
+
+.select-icon svg.icon {
+  transition: fill 0.3s ease;
+  fill: white;
+}
+
+select:hover,
+select:focus {
+  color: #c0392b;
+  background-color: white;
+  border-bottom-color: #DCDCDC;
+}
+
+select:hover ~ .select-icon,
+select:focus ~ .select-icon {
+  background-color: white;
+  border-color: #DCDCDC;
+}
+
+select:hover ~ .select-icon svg.icon,
+select:focus ~ .select-icon svg.icon {
+  fill: #c0392b;
+}
+
+.sort_section {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: baseline;
+
+}
+
+.sort_title {
+  font-size: 25px;
+  color: $grey;
+  font-weight: bold;
+  margin-right: 20px;
+}
