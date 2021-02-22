@@ -8,7 +8,7 @@ import ErrorBoundary from "./components/error/ErrorBoundary";
 
 const App = () => (
   <React.Fragment>
-    <Header />
+    <Header button_search='SEARCH' button_add='+ ADD MOVIE'/>
     <Navigation />
     <ErrorBoundary>
       <Main />

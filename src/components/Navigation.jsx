@@ -4,7 +4,7 @@ import ListOfGenres from "./lists/ListOfGenres";
 
 
 const Navigation = () => {
-
+ const g = ['','','']
   return (
     <nav>
       <ul>
@@ -14,7 +14,7 @@ const Navigation = () => {
         <span className='sort_title'>SORT BY</span>
         <div className="dropdown-container">
         <select className='select-css'>
-          <ListOfYears/>
+          <ListOfYears list={g}/>
         </select>
           <div className="select-icon">
             <span>&#9650;</span>
