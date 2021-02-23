@@ -1,21 +1,20 @@
-import React from "react";
-import ListOfYears from "./lists/ListOfYears";
-import ListOfGenres from "./lists/ListOfGenres";
-
+import React from 'react';
+import ListOfYears from './lists/ListOfYears';
+import ListOfGenres from './lists/ListOfGenres';
 
 const Navigation = () => {
- const g = ['','','']
+  const g = ['', '', ''];
   return (
     <nav>
       <ul>
-        <ListOfGenres/>
+        <ListOfGenres />
       </ul>
-      <section className='sort_section'>
-        <span className='sort_title'>SORT BY</span>
+      <section className="sort_section">
+        <span className="sort_title">SORT BY</span>
         <div className="dropdown-container">
-        <select className='select-css'>
-          <ListOfYears list={g}/>
-        </select>
+          <select className="select-css">
+            <ListOfYears list={g} />
+          </select>
           <div className="select-icon">
             <span>&#9650;</span>
           </div>
@@ -24,6 +23,5 @@ const Navigation = () => {
     </nav>
   );
 };
-
 
 export default Navigation;

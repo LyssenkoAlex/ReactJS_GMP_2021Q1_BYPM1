@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const movie = null;
 
-const Main = () => {
-  return (<main>List of movies{movie.title}</main>);
-};
+const Main = () => <main>{movie.title}</main>;
 
 export default Main;
