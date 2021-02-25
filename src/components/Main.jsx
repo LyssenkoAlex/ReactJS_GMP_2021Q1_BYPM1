@@ -1,7 +1,11 @@
 import React from 'react';
+import ListOfMovies from './lists/ListOfMovies';
 
-const movie = { title: 'great movie' };
-
-const Main = () => <main>{movie.title}</main>;
-
+const Main = () => (
+  <main>
+    <section className="movies_wrapper">
+      <ListOfMovies />
+    </section>
+  </main>
+);
 export default Main;

@@ -2,6 +2,7 @@
 // eslint-disable react/prefer-stateless-function
 // eslint-disable no-unused-expressions,react/prop-types
 // eslint-disable react/prop-types
+// eslint-disable react/require-default-props,react/no-unused-prop-types
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -67,7 +68,8 @@ class AddMovie extends React.Component {
 export default AddMovie;
 
 AddMovie.propTypes = {
-  // eslint-disable-next-line react/require-default-props,react/no-unused-prop-types
+  // eslint-disable-next-line react/no-unused-prop-types,react/require-default-props
   isShow: PropTypes.bool,
+  // eslint-disable-next-line react/require-default-props
   onClose: PropTypes.func,
 };

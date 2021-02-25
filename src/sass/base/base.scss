@@ -77,9 +77,9 @@ h2 {
   filter: blur(0);
   opacity: 1;
   visibility: visible;
-  position: absolute;
+  position: fixed;
   z-index: 10;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: $black;
@@ -142,4 +142,5 @@ h2 {
 .close_mark {
   font-size: 30px;
   margin: 15px;
+  cursor: pointer;
 }

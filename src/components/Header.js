@@ -7,7 +7,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShow: true,
+      isShow: false,
     };
     this.toggleShow = this.toggleShow.bind(this);
   }
