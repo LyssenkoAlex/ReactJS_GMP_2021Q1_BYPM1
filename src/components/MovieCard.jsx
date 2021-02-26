@@ -17,19 +17,31 @@ class MovieCard extends React.Component {
           onError={this.addDefaultSrc}
           src={this.props.movie.poster_path}
           alt="headline"
+          key={`img_${this.props.movie.id}`}
         />
 
-        <a href={`#popup_${this.props.movie.id}`}>
-          <div className="dots" />
+        <a
+          href={`#popup_${this.props.movie.id}`}
+          key={`ahref_${this.props.movie.id}`}
+        >
+          <div className="dots" key={`dots_${this.props.movie.id}`} />
         </a>
 
-        <div id={`popup_${this.props.movie.id}`} className="overlay">
-          <div className="popup">
-            <a className="close" href="#">
-              <div>&times;</div>
+        <div
+          id={`overlay_${this.props.movie.id}`}
+          className="overlay"
+          key={`overlay_${this.props.movie.id}`}
+        >
+          <div className="popup" key={`popup_${this.props.movie.id}`}>
+            <a
+              className="close"
+              href="#"
+              key={`a_cl_${this.props.movie.id}`}
+            >
+              <div key={`times_${this.props.movie.id}`}>&times;</div>
             </a>
-            <h5>Edit</h5>
-            <h5>Delete</h5>
+            <h5 key={`h5_1_${this.props.movie.id}`}>Edit</h5>
+            <h5 key={`h5_2_${this.props.movie.id}`}>Delete</h5>
           </div>
         </div>
       </section>

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import movies from "../../data/movies.json";
 import imageNotFound from "../../assets/img/image_not_found.jpg";
 import MovieCard from "../MovieCard";
+import AddMovie from "../modals/AddMovie";
 
 class ListOfMovies extends React.Component {
   constructor(props) {
