@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid,no-undef,react/prop-types,react/destructuring-assignment,class-methods-use-this,no-param-reassign */
+/* eslint-disable jsx-a11y/anchor-is-valid,no-undef,react/prop-types,react/destructuring-assignment,class-methods-use-this,no-param-reassign,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import imageNotFound from '../assets/img/image_not_found.jpg';
 
@@ -28,7 +28,7 @@ class MovieCard extends React.Component {
         </a>
 
         <div
-          id={`overlay_${this.props.movie.id}`}
+          id={`popup_${this.props.movie.id}`}
           className="overlay"
           key={`overlay_${this.props.movie.id}`}
         >
@@ -40,8 +40,18 @@ class MovieCard extends React.Component {
             >
               <div key={`times_${this.props.movie.id}`}>&times;</div>
             </a>
-            <h5 key={`h5_1_${this.props.movie.id}`}>Edit</h5>
-            <h5 key={`h5_2_${this.props.movie.id}`}>Delete</h5>
+            <h5
+              key={`h5_1_${this.props.movie.id}`}
+              onClick={this.props.onClose}
+            >
+              Edit
+            </h5>
+            <h5
+              key={`h5_2_${this.props.movie.id}`}
+              onClick={this.props.onDelete}
+            >
+              Delete
+            </h5>
           </div>
         </div>
       </section>
