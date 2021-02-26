@@ -14,7 +14,6 @@ const ListOfYears = () =>
     </option>
   ));
 
-// ListOfYears.unshift(<option key={`year${ListOfYears.length + 1}`} selected value='RELEASE DATE'>RELEASE DATE</option>)
 
 export default ListOfYears;
 
