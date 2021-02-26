@@ -1,4 +1,4 @@
-/* eslint-disable react/button-has-type,jsx-a11y/no-interactive-element-to-noninteractive-role,react/destructuring-assignment,jsx-a11y/aria-role */
+/* eslint-disable react/button-has-type,jsx-a11y/no-interactive-element-to-noninteractive-role,react/destructuring-assignment,jsx-a11y/aria-role,react/no-unused-state,class-methods-use-this */
 // eslint-disable react/prefer-stateless-function
 // eslint-disable no-unused-expressions,react/prop-types
 // eslint-disable react/prop-types
@@ -9,6 +9,22 @@ import PropTypes from 'prop-types';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class AddMovie extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+
   render() {
     return (
       <section className="modal">
@@ -18,42 +34,69 @@ class AddMovie extends React.Component {
         </span>
         <h3>ADD MOVIE</h3>
         <div className="content">
-          <section>
-            <label htmlFor="title">
-              <span>TITLE</span>
-              <input type="text" id="title" placeholder="Moana" />
-            </label>
-          </section>
-          <section>
-            <label htmlFor="title">
-              <span>RELEASE DATE</span>
-              <input type="date" value="Select Date" />
-            </label>
-          </section>
-          <section>
-            <label htmlFor="title">
-              <span>MOVIE URL</span>
-              <input type="date" value="Movie URL here" />
-            </label>
-          </section>
-          <section>
-            <label htmlFor="title">
-              <span>GENRE</span>
-              <input type="text" value="Select Genre" />
-            </label>
-          </section>
-          <section>
-            <label htmlFor="title">
-              <span>OVERVIEW</span>
-              <input type="text" value="Overview here" />
-            </label>
-          </section>
-          <section>
-            <label htmlFor="title">
-              <span>RUNTIME</span>
-              <input type="text" value="Runtime here" />
-            </label>
-          </section>
+          <form>
+            <section>
+              <label htmlFor="title">
+                <span>TITLE</span>
+                <input
+                  type="text"
+                  id="title"
+                  placeholder="Moana"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label htmlFor="title">
+                <span>RELEASE DATE</span>
+                <input
+                  type="date"
+                  value="Select Date"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label htmlFor="title">
+                <span>MOVIE URL</span>
+                <input
+                  type="date"
+                  value="Movie URL here"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label htmlFor="title">
+                <span>GENRE</span>
+                <input
+                  type="text"
+                  value="Select Genre"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label htmlFor="title">
+                <span>OVERVIEW</span>
+                <input
+                  type="text"
+                  value="Overview here"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </section>
+            <section>
+              <label htmlFor="title">
+                <span>RUNTIME</span>
+                <input
+                  type="text"
+                  value="Runtime here"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </section>
+          </form>
         </div>
         {/* eslint-disable-next-line react/prop-types */}
         <button role="reset" onClick={this.props.onClose}>
