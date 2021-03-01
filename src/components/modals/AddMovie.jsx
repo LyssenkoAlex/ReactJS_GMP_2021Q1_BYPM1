@@ -99,7 +99,7 @@ class AddMovie extends React.Component {
           </form>
         </div>
         {/* eslint-disable-next-line react/prop-types */}
-        <button role="reset" onClick={this.props.onClose}>
+        <button role="reset" onClick={() => this.props.onClose(5)}>
           Reset
         </button>
         <button role="search">Submit</button>

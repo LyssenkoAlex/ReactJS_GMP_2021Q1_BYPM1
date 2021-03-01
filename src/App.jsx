@@ -11,10 +11,10 @@ const App = () => (
   <>
     <Header button_search="SEARCH" button_add="+ ADD MOVIE" />
     <Navigation />
+    <Main />
     <ErrorBoundary>
-      <Main />
+      <Footer />
     </ErrorBoundary>
-    <Footer />
   </>
 );
 

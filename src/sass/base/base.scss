@@ -2,6 +2,8 @@ html {
   font-size: 10px;
   min-width: $content-width;
   background-color: $black;
+  scroll-behavior: smooth;
+
 }
 
 button {

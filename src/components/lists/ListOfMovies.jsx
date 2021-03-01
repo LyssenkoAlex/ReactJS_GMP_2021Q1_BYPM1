@@ -1,4 +1,4 @@
-/* eslint-disable react/no-array-index-key,jsx-a11y/anchor-is-valid,react/no-unused-state,react/no-unused-prop-types,react/require-default-props,react/destructuring-assignment,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,no-return-assign,class-methods-use-this,no-param-reassign,prettier/prettier,no-unused-vars,no-undef */
+/* eslint-disable react/no-array-index-key,jsx-a11y/anchor-is-valid,react/no-unused-state,react/no-unused-prop-types,react/require-default-props,react/destructuring-assignment,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,no-return-assign,class-methods-use-this,no-param-reassign,prettier/prettier,no-unused-vars,no-undef,react/sort-comp */
 import React from "react";
 import PropTypes from "prop-types";
 import movies from "../../data/movies.json";
@@ -13,10 +13,13 @@ class ListOfMovies extends React.Component {
     this.state = {
       isShow: false,
       isShowEdit: false,
-      isShowDelete: false
+      isShowDelete: false,
+      movieId: null,
+      movieToDelete:null
     };
     this.toggleShow = this.toggleShow.bind(this);
     this.toggleShowDelete = this.toggleShowDelete.bind(this);
+    this.setMovieId = this.setMovieId.bind(this);
 
   }
 
@@ -30,6 +33,14 @@ class ListOfMovies extends React.Component {
     this.setState((state) => ({ isShowDelete: !state.isShowDelete }));
   }
 
+  setMovieId(value) {
+    console.log("setMovieId: ", value);
+    this.setState({ movieId: value });
+    this.setState((state) => ({ isShowDelete: !state.isShowDelete }));
+    this.setState((state) => ({movieToDelete:movies.find((x) => (x.id === state.movieId))}));
+
+  }
+
 
   addDefaultSrc(ev) {
     ev.target.src = imageNotFound;
@@ -38,7 +49,12 @@ class ListOfMovies extends React.Component {
   // eslint-disable-next-line class-methods-use-this
   render() {
     const moviesList = movies.slice(0, 21).map((movie) => (
-      <MovieCard movie={movie} onClose={this.toggleShow} onDelete={this.toggleShowDelete} />
+      <MovieCard
+        movie={movie}
+        onClose={this.toggleShow}
+        onDelete={this.toggleShowDelete}
+        setMovieId={this.setMovieId}
+      />
     ));
     return (
       <>
@@ -47,7 +63,7 @@ class ListOfMovies extends React.Component {
           <AddMovie onClose={this.toggleShow} />
         ) : null}
         {this.state.isShowDelete ? (
-          <DeleteMovie onClose={this.toggleShowDelete} />
+          <DeleteMovie onClose={this.toggleShowDelete} movieToDelete={this.state.movieToDelete} />
         ) : null}
 
       </>
@@ -68,4 +84,6 @@ ListOfMovies.propTypes = {
 ),
   // eslint-disable-next-line react/forbid-prop-types
   movie: PropTypes.object
-};
+}
+
+;

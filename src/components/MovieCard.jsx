@@ -1,10 +1,19 @@
-/* eslint-disable jsx-a11y/anchor-is-valid,no-undef,react/prop-types,react/destructuring-assignment,class-methods-use-this,no-param-reassign,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid,no-undef,react/prop-types,react/destructuring-assignment,class-methods-use-this,no-param-reassign,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,react/sort-comp */
 import React from 'react';
 import imageNotFound from '../assets/img/image_not_found.jpg';
 
 class MovieCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleMovieId = this.handleMovieId.bind(this);
+  }
+
   addDefaultSrc(ev) {
     ev.target.src = imageNotFound;
+  }
+
+  handleMovieId() {
+    this.props.setMovieId(this.props.movie.id);
   }
 
   render() {
@@ -48,7 +57,7 @@ class MovieCard extends React.Component {
             </h5>
             <h5
               key={`h5_2_${this.props.movie.id}`}
-              onClick={this.props.onDelete}
+              onClick={this.handleMovieId}
             >
               Delete
             </h5>
