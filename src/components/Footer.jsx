@@ -3,8 +3,7 @@ import React from 'react';
 // eslint-disable-next-line react/prefer-stateless-function
 class Footer extends React.Component {
   render() {
-    const movie = null;
-    return <footer>{movie.title}</footer>;
+    return <footer>Some footer</footer>;
   }
 }
 

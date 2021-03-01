@@ -9,7 +9,34 @@
       object-position: center;
     }
   }
+  .dots {
+    display: none;
+    &:hover .overlay {
+      display: block;
+    }
+  }
 }
+
+.movie_container:hover .dots {
+  display: block;
+}
+
+.movie_container:hover .dot:hover .overlay {
+  display: block;
+}
+
+.movies_desc {
+  color: $white;
+  margin: 15px;
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 15px;
+    text-align: right;
+  }
+}
+
 
 
 .dots {
@@ -20,8 +47,9 @@
   color: white;
   border-radius: 50%;
   margin: 5px;
-  top: 1px;
-  right: 85px;
+  top: 5px;
+  right: 70px;
+  display: none;
 }
 
 .dots:after {
@@ -43,28 +71,24 @@
   right: 0;
   background: rgba(0, 0, 0, 0.7);
   transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
+  display: none;
 }
 
 .popup {
   border-radius: 5px;
-  width: 30%;
+  width: 150px;
   transition: all 5s ease-in-out;
   position: absolute;
   top: 15px;
-  left: 38%;
-  background-color: $dark-grey;
-  color: $white;
+  right: 25px;
+  background-color: #424242;
+  color: #FFFFFF;
+  z-index: 15;
 
   h5 {
     font-size: 20px;
     margin: 5px 0;
+    padding-left: 5px;
     &:hover {
       color: $dark-grey;
       background-color: $red;
@@ -77,6 +101,10 @@
     font-weight: bold;
     text-decoration: none;
     color: #333;
+    div {
+      text-align: right;
+      padding-right: 5px;
+    }
 
     &:hover {
       color: $red;
