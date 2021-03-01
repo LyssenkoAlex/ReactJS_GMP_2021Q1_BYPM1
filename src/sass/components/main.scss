@@ -1,8 +1,18 @@
-
+main {
+  margin: auto;
+}
 .movies_wrapper {
   margin-top: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   position: relative;
+  gap: 25px;
 }
 
+.movie_counter {
+  h3 {
+    color: $white;
+    font-size: x-large;
+    margin-left: 25px;
+  }
+}

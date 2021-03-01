@@ -2,7 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import movies from "../../data/movies.json";
-import imageNotFound from "../../assets/img/image_not_found.jpg";
 import MovieCard from "../MovieCard";
 import AddMovie from "../modals/AddMovie";
 import DeleteMovie from "../modals/DeleteMovie";
@@ -11,10 +10,9 @@ class ListOfMovies extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShow: false,
       isShowEdit: false,
       isShowDelete: false,
-      movieToEdit:null
+      movieToEdit: null
     };
     this.toggleShow = this.toggleShow.bind(this);
     this.toggleShowDelete = this.toggleShowDelete.bind(this);
@@ -25,7 +23,7 @@ class ListOfMovies extends React.Component {
 
   toggleShow() {
     // eslint-disable-next-line react/no-access-state-in-setstate
-    this.setState((state) => ({ isShow: !state.isShow }));
+    this.setState((state) => ({ isShowEdit: !state.isShowEdit }));
   }
 
   toggleShowDelete() {
@@ -33,22 +31,15 @@ class ListOfMovies extends React.Component {
     this.setState((state) => ({ isShowDelete: !state.isShowDelete }));
   }
 
-
-
   deleteMovie(value) {
-    console.log('list deleteMovie: ', value)
-    this.setState({movieToEdit:value});
+    this.setState({ movieToEdit: value });
     this.setState((state) => ({ isShowDelete: !state.isShowDelete }));
   }
 
   editMovie(value) {
-    this.setState({movieToEdit:value});
+    this.setState({ movieToEdit: value });
     this.setState((state) => ({ isShowEdit: !state.isShowEdit }));
   }
-
-
-
-
 
   // eslint-disable-next-line class-methods-use-this
   render() {
@@ -64,7 +55,7 @@ class ListOfMovies extends React.Component {
       <>
         {moviesList}
         {this.state.isShowEdit ? (
-          <AddMovie onClose={this.toggleShow} mode="EDIT" movieToEdit={this.state.movieToEdit} />
+          <AddMovie onClose={this.toggleShow} movieToEdit={this.state.movieToEdit} />
         ) : null}
         {this.state.isShowDelete ? (
           <DeleteMovie onClose={this.toggleShowDelete} movieToEdit={this.state.movieToEdit} />

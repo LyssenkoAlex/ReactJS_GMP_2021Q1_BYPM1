@@ -40,8 +40,6 @@ class AddMovie extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
-    console.log('state: ', this.state);
   }
 
   handleChange(event) {
@@ -131,10 +129,12 @@ class AddMovie extends React.Component {
           </form>
         </div>
         {/* eslint-disable-next-line react/prop-types */}
-        <button role="reset" onClick={() => this.props.onClose(5)}>
+        <button role="reset" onClick={this.props.onClose}>
           Reset
         </button>
-        <button role="search">Submit</button>
+        <button role="search" onClick={this.props.onClose}>
+          Submit
+        </button>
       </section>
     );
   }

@@ -33,39 +33,43 @@ class MovieCard extends React.Component {
           alt="headline"
           key={`img_${this.props.movie.id}`}
         />
+        <section className="movies_desc">
+          <h3>{this.props.movie.title}</h3>
+          <h3>{this.props.movie.genres.join()}</h3>
+          <h4>{this.props.movie.release_date}</h4>
+        </section>
 
-        <a
-          href={`#popup_${this.props.movie.id}`}
-          key={`ahref_${this.props.movie.id}`}
-        >
-          <div className="dots" key={`dots_${this.props.movie.id}`} />
-        </a>
-
-        <div
-          id={`popup_${this.props.movie.id}`}
-          className="overlay"
-          key={`overlay_${this.props.movie.id}`}
-        >
-          <div className="popup" key={`popup_${this.props.movie.id}`}>
-            <a
-              className="close"
-              href="#"
-              key={`a_cl_${this.props.movie.id}`}
+        <div className="dots" key={`dots_${this.props.movie.id}`}>
+          <div
+            className="overlay"
+            key={`overlay_${this.props.movie.id}`}
+          >
+            <div
+              className="popup"
+              key={`popup_${this.props.movie.id}`}
             >
-              <div key={`times_${this.props.movie.id}`}>&times;</div>
-            </a>
-            <h5
-              key={`h5_1_${this.props.movie.id}`}
-              onClick={this.handleEditMovie}
-            >
-              Edit
-            </h5>
-            <h5
-              key={`h5_2_${this.props.movie.id}`}
-              onClick={this.handleDeleteMovie}
-            >
-              Delete
-            </h5>
+              <a
+                className="close"
+                href="#"
+                key={`a_cl_${this.props.movie.id}`}
+              >
+                <div key={`times_${this.props.movie.id}`}>
+                  &times;
+                </div>
+              </a>
+              <h5
+                key={`h5_1_${this.props.movie.id}`}
+                onClick={this.handleEditMovie}
+              >
+                Edit
+              </h5>
+              <h5
+                key={`h5_2_${this.props.movie.id}`}
+                onClick={this.handleDeleteMovie}
+              >
+                Delete
+              </h5>
+            </div>
           </div>
         </div>
       </section>
