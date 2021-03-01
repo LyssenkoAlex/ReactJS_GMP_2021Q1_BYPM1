@@ -10,7 +10,7 @@ class DeleteMovie extends React.Component {
           &#10005;
         </span>
         <h3>DELETE MOVIE</h3>
-        <h3>{this.props.movieToDelete.title}</h3>
+        <h3>{this.props.movieToEdit.title}</h3>
 
         <div className="content">
           <h3>Are you sure you want to delete this movie?</h3>

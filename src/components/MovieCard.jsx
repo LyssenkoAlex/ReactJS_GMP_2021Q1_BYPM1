@@ -5,15 +5,20 @@ import imageNotFound from '../assets/img/image_not_found.jpg';
 class MovieCard extends React.Component {
   constructor(props) {
     super(props);
-    this.handleMovieId = this.handleMovieId.bind(this);
+    this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
+    this.handleEditMovie = this.handleEditMovie.bind(this);
   }
 
   addDefaultSrc(ev) {
     ev.target.src = imageNotFound;
   }
 
-  handleMovieId() {
-    this.props.setMovieId(this.props.movie.id);
+  handleDeleteMovie() {
+    this.props.deleteMovie(this.props.movie);
+  }
+
+  handleEditMovie() {
+    this.props.editMovie(this.props.movie);
   }
 
   render() {
@@ -51,13 +56,13 @@ class MovieCard extends React.Component {
             </a>
             <h5
               key={`h5_1_${this.props.movie.id}`}
-              onClick={this.props.onClose}
+              onClick={this.handleEditMovie}
             >
               Edit
             </h5>
             <h5
               key={`h5_2_${this.props.movie.id}`}
-              onClick={this.handleMovieId}
+              onClick={this.handleDeleteMovie}
             >
               Delete
             </h5>

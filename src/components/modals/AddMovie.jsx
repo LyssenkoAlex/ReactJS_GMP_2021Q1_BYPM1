@@ -1,4 +1,4 @@
-/* eslint-disable react/button-has-type,jsx-a11y/no-interactive-element-to-noninteractive-role,react/destructuring-assignment,jsx-a11y/aria-role,react/no-unused-state,class-methods-use-this */
+/* eslint-disable react/button-has-type,jsx-a11y/no-interactive-element-to-noninteractive-role,react/destructuring-assignment,jsx-a11y/aria-role,react/no-unused-state,class-methods-use-this,react/prop-types */
 // eslint-disable react/prefer-stateless-function
 // eslint-disable no-unused-expressions,react/prop-types
 // eslint-disable react/prop-types
@@ -11,10 +11,37 @@ import PropTypes from 'prop-types';
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = {
+      title:
+        this.props.movieToEdit === undefined
+          ? 'Please enter title'
+          : this.props.movieToEdit.title,
+      release_date:
+        this.props.movieToEdit === undefined
+          ? ''
+          : this.props.movieToEdit.release_date,
+      movie_url:
+        this.props.movieToEdit === undefined
+          ? ''
+          : this.props.movieToEdit.poster_path,
+      genres:
+        this.props.movieToEdit === undefined
+          ? ''
+          : this.props.movieToEdit.genres.join(),
+      overview:
+        this.props.movieToEdit === undefined
+          ? ''
+          : this.props.movieToEdit.overview,
+      runtime:
+        this.props.movieToEdit === undefined
+          ? ''
+          : this.props.movieToEdit.runtime,
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    console.log('state: ', this.state);
   }
 
   handleChange(event) {
@@ -41,7 +68,7 @@ class AddMovie extends React.Component {
                 <input
                   type="text"
                   id="title"
-                  placeholder="Moana"
+                  placeholder="Enter movie title"
                   onChange={this.handleChange}
                 />
               </label>
@@ -51,8 +78,9 @@ class AddMovie extends React.Component {
                 <span>RELEASE DATE</span>
                 <input
                   type="date"
-                  value="Select Date"
                   onChange={this.handleChange}
+                  placeholder="dd-mm-yyyy"
+                  value={this.state.release_date}
                 />
               </label>
             </section>
@@ -60,9 +88,10 @@ class AddMovie extends React.Component {
               <label htmlFor="title">
                 <span>MOVIE URL</span>
                 <input
-                  type="date"
-                  value="Movie URL here"
+                  type="text"
                   onChange={this.handleChange}
+                  placeholder="Enter movie URL"
+                  value={this.state.movie_url}
                 />
               </label>
             </section>
@@ -71,8 +100,9 @@ class AddMovie extends React.Component {
                 <span>GENRE</span>
                 <input
                   type="text"
-                  value="Select Genre"
+                  value={this.state.genres}
                   onChange={this.handleChange}
+                  placeholder="Select genre"
                 />
               </label>
             </section>
@@ -81,8 +111,9 @@ class AddMovie extends React.Component {
                 <span>OVERVIEW</span>
                 <input
                   type="text"
-                  value="Overview here"
+                  placeholder="Overview here"
                   onChange={this.handleChange}
+                  value={this.state.overview}
                 />
               </label>
             </section>
@@ -91,8 +122,9 @@ class AddMovie extends React.Component {
                 <span>RUNTIME</span>
                 <input
                   type="text"
-                  value="Runtime here"
+                  placeholder="Runtime here"
                   onChange={this.handleChange}
+                  value={this.state.runtime}
                 />
               </label>
             </section>
