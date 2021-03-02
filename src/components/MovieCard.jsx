@@ -32,8 +32,12 @@ class MovieCard extends React.Component {
         />
         <section className="movies_desc">
           <h3>{this.props.movie.title}</h3>
-          <h3>{this.props.movie.genres.join()}</h3>
-          <h4>{this.props.movie.release_date}</h4>
+          <section className="second_line">
+            <h3>{this.props.movie.genres.join(', ')}</h3>
+            <h4>
+              {new Date(this.props.movie.release_date).getFullYear()}
+            </h4>
+          </section>
         </section>
 
         <div className="dots">
