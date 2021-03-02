@@ -49,6 +49,7 @@ class ListOfMovies extends React.Component {
         onClose={this.toggleShow}
         deleteMovie={this.deleteMovie}
         editMovie={this.editMovie}
+        key={movie.id}
       />
     ));
     return (
@@ -70,15 +71,3 @@ class ListOfMovies extends React.Component {
 
 export default ListOfMovies;
 
-ListOfMovies.propTypes = {
-  movies: PropTypes.arrayOf
-(
-  PropTypes
-.
-  object
-),
-  // eslint-disable-next-line react/forbid-prop-types
-  movie: PropTypes.object
-}
-
-;

@@ -1,12 +1,12 @@
 import React from 'react';
-import ListOfYears from './lists/ListOfYears';
+import ListOfYears from './lists/SortOptions';
 import ListOfGenres from './lists/ListOfGenres';
 
 const Navigation = () => {
   const g = ['', '', ''];
   return (
     <nav>
-      <ul>
+      <ul className="menu">
         <ListOfGenres />
       </ul>
       <section className="sort_section">
