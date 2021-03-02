@@ -1,60 +1,60 @@
-/* eslint-disable jsx-a11y/anchor-is-valid,no-undef,react/prop-types,react/destructuring-assignment,class-methods-use-this,no-param-reassign,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,react/sort-comp */
 import React from 'react';
 import PropTypes from 'prop-types';
 import imageNotFound from '../assets/img/image_not_found.jpg';
 
-class MovieCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
-    this.handleEditMovie = this.handleEditMovie.bind(this);
-  }
-
-  addDefaultSrc(ev) {
+const MovieCard = (
+    movie,
+  onClose,
+  deleteMovie,
+  editMovie
+) => {
+  const addDefaultSrc = (ev) => {
     ev.target.src = imageNotFound;
-  }
+  };
 
-  handleDeleteMovie() {
-    this.props.deleteMovie(this.props.movie);
-  }
+  const handleDeleteMovie = () => {
+    deleteMovie(movie.movie);
+  };
 
-  handleEditMovie() {
-    this.props.editMovie(this.props.movie);
-  }
+  const handleEditMovie = () => {
+    editMovie(movie.movie);
+  };
 
-  render() {
-    return (
-      <section className="movie_container">
-        <img
-          onError={this.addDefaultSrc}
-          src={this.props.movie.poster_path}
-          alt="headline"
-        />
-        <section className="movies_desc">
-          <h3>{this.props.movie.title}</h3>
-          <section className="second_line">
-            <h3>{this.props.movie.genres.join(', ')}</h3>
-            <h4>
-              {new Date(this.props.movie.release_date).getFullYear()}
-            </h4>
-          </section>
+  console.log('mov: ', movie);
+
+  return (
+    <section className="movie_container">
+      <img
+        onError={addDefaultSrc}
+        src={movie.movie.poster_path}
+        alt="headline"
+      />
+      <section className="movies_desc">
+        <h3>{movie.movie.title}</h3>
+        <section className="second_line">
+          <h3>{movie.movie.genres.join(', ')}</h3>
+          <h4>
+            {new Date(
+                movie.movie.release_date
+            ).getFullYear()}
+          </h4>
         </section>
+      </section>
 
-        <div className="dots">
-          <div className="overlay">
-            <div className="popup">
-              <a className="close" href="#">
-                <div>&times;</div>
-              </a>
-              <h5 onClick={this.handleEditMovie}>Edit</h5>
-              <h5 onClick={this.handleDeleteMovie}>Delete</h5>
-            </div>
+      <div className="dots">
+        <div className="overlay">
+          <div className="popup">
+            <a className="close" href="#">
+              <div>&times;</div>
+            </a>
+            <h5 onClick={handleEditMovie}>Edit</h5>
+            <h5 onClick={handleDeleteMovie}>Delete</h5>
           </div>
         </div>
-      </section>
-    );
-  }
-}
+      </div>
+    </section>
+  );
+};
 
 export default MovieCard;
 
@@ -64,9 +64,14 @@ MovieCard.propTypes = {
     release_date: PropTypes.string,
     genres: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
+    poster_path: PropTypes.string,
   }),
+  deleteMovie: PropTypes.func,
+  editMovie: PropTypes.func,
 };
 
 MovieCard.defaultProps = {
   movie: null,
+  deleteMovie: null,
+  editMovie: null,
 };

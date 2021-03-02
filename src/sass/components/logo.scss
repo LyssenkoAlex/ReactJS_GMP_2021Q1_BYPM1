@@ -1,0 +1,10 @@
+.logo {
+  .red_font {
+    color: $red;
+    font-size: x-large;
+
+    &_bold {
+      font-weight: bold;
+    }
+  }
+}

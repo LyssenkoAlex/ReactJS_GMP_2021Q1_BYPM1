@@ -1,73 +1,60 @@
-/* eslint-disable react/no-array-index-key,jsx-a11y/anchor-is-valid,react/no-unused-state,react/no-unused-prop-types,react/require-default-props,react/destructuring-assignment,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,no-return-assign,class-methods-use-this,no-param-reassign,prettier/prettier,no-unused-vars,no-undef,react/sort-comp */
-import React from "react";
-import PropTypes from "prop-types";
-import movies from "../../data/movies.json";
-import MovieCard from "../MovieCard";
-import AddMovie from "../modals/AddMovie";
-import DeleteMovie from "../modals/DeleteMovie";
+import React, { useState } from 'react';
+import movies from '../../data/movies.json';
+import MovieCard from '../MovieCard';
+import AddMovie from '../modals/AddMovie';
+import DeleteMovie from '../modals/DeleteMovie';
 
-class ListOfMovies extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isShowEdit: false,
-      isShowDelete: false,
-      movieToEdit: null
-    };
-    this.toggleShow = this.toggleShow.bind(this);
-    this.toggleShowDelete = this.toggleShowDelete.bind(this);
-    this.deleteMovie = this.deleteMovie.bind(this);
-    this.editMovie = this.editMovie.bind(this);
+const ListOfMovies = () => {
+  const [isShowEdit, setIsShowEdit] = useState(false);
+  const [isShowDelete, setIsShowDelete] = useState(false);
+  const [movieToEdit, setMovieToEdit] = useState(null);
 
-  }
+  const toggleShow = () => {
+    setIsShowEdit(!isShowEdit);
+  };
 
-  toggleShow() {
-    // eslint-disable-next-line react/no-access-state-in-setstate
-    this.setState((state) => ({ isShowEdit: !state.isShowEdit }));
-  }
+  const toggleShowDelete = () => {
+    setIsShowDelete(!isShowDelete);
+  };
 
-  toggleShowDelete() {
-    // eslint-disable-next-line react/no-access-state-in-setstate
-    this.setState((state) => ({ isShowDelete: !state.isShowDelete }));
-  }
+  const deleteMovie = (value) => {
+    setMovieToEdit(value);
+    setIsShowDelete(!isShowDelete);
+  };
 
-  deleteMovie(value) {
-    this.setState({ movieToEdit: value });
-    this.setState((state) => ({ isShowDelete: !state.isShowDelete }));
-  }
-
-  editMovie(value) {
-    this.setState({ movieToEdit: value });
-    this.setState((state) => ({ isShowEdit: !state.isShowEdit }));
-  }
+  const editMovie = (value) => {
+    setMovieToEdit(value);
+    setIsShowEdit(!isShowEdit);
+  };
 
   // eslint-disable-next-line class-methods-use-this
-  render() {
-    const moviesList = movies.slice(0, 21).map((movie) => (
+
+  const moviesList = movies
+    .slice(0, 21)
+    .map((movie) => (
       <MovieCard
         movie={movie}
-        onClose={this.toggleShow}
-        deleteMovie={this.deleteMovie}
-        editMovie={this.editMovie}
+        onClose={toggleShow}
+        deleteMovie={deleteMovie}
+        editMovie={editMovie}
         key={movie.id}
       />
     ));
-    return (
-      <>
-        {moviesList}
-        {this.state.isShowEdit ? (
-          <AddMovie onClose={this.toggleShow} movieToEdit={this.state.movieToEdit} />
-        ) : null}
-        {this.state.isShowDelete ? (
-          <DeleteMovie onClose={this.toggleShowDelete} movieToEdit={this.state.movieToEdit} />
-        ) : null}
 
-      </>
-    );
-  }
-
-}
-
+  return (
+    <>
+      {moviesList}
+      {isShowEdit ? (
+        <AddMovie onClose={toggleShow} movieToEdit={movieToEdit} />
+      ) : null}
+      {isShowDelete ? (
+        <DeleteMovie
+          onClose={toggleShowDelete}
+          movieToEdit={movieToEdit}
+        />
+      ) : null}
+    </>
+  );
+};
 
 export default ListOfMovies;
-
