@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid,no-undef,react/prop-types,react/destructuring-assignment,class-methods-use-this,no-param-reassign,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,react/sort-comp */
 import React from 'react';
+import PropTypes from 'prop-types';
 import imageNotFound from '../assets/img/image_not_found.jpg';
 
 class MovieCard extends React.Component {
@@ -23,15 +24,11 @@ class MovieCard extends React.Component {
 
   render() {
     return (
-      <section
-        className="movie_container"
-        key={`poster_${this.props.movie.id}`}
-      >
+      <section className="movie_container">
         <img
           onError={this.addDefaultSrc}
           src={this.props.movie.poster_path}
           alt="headline"
-          key={`img_${this.props.movie.id}`}
         />
         <section className="movies_desc">
           <h3>{this.props.movie.title}</h3>
@@ -39,36 +36,14 @@ class MovieCard extends React.Component {
           <h4>{this.props.movie.release_date}</h4>
         </section>
 
-        <div className="dots" key={`dots_${this.props.movie.id}`}>
-          <div
-            className="overlay"
-            key={`overlay_${this.props.movie.id}`}
-          >
-            <div
-              className="popup"
-              key={`popup_${this.props.movie.id}`}
-            >
-              <a
-                className="close"
-                href="#"
-                key={`a_cl_${this.props.movie.id}`}
-              >
-                <div key={`times_${this.props.movie.id}`}>
-                  &times;
-                </div>
+        <div className="dots">
+          <div className="overlay">
+            <div className="popup">
+              <a className="close" href="#">
+                <div>&times;</div>
               </a>
-              <h5
-                key={`h5_1_${this.props.movie.id}`}
-                onClick={this.handleEditMovie}
-              >
-                Edit
-              </h5>
-              <h5
-                key={`h5_2_${this.props.movie.id}`}
-                onClick={this.handleDeleteMovie}
-              >
-                Delete
-              </h5>
+              <h5 onClick={this.handleEditMovie}>Edit</h5>
+              <h5 onClick={this.handleDeleteMovie}>Delete</h5>
             </div>
           </div>
         </div>
@@ -78,3 +53,16 @@ class MovieCard extends React.Component {
 }
 
 export default MovieCard;
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    release_date: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string,
+  }),
+};
+
+MovieCard.defaultProps = {
+  movie: null,
+};
