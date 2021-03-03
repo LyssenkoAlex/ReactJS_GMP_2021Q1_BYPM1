@@ -1,24 +1,23 @@
-/* eslint-disable react/button-has-type,jsx-a11y/no-interactive-element-to-noninteractive-role,react/destructuring-assignment,jsx-a11y/aria-role,react/no-unused-state,class-methods-use-this,react/prop-types */
-// eslint-disable react/prefer-stateless-function
-// eslint-disable no-unused-expressions,react/prop-types
-// eslint-disable react/prop-types
-// eslint-disable react/require-default-props,react/no-unused-prop-types
-
-import React from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prefer-stateless-function
 const AddMovie = (movie) => {
+  const { roleReset } = 'reset';
+  const { roleSearch } = 'search';
+
+  // eslint-disable-next-line no-unused-vars
+  const [value, setValue] = useState(null);
   const title =
     movie.movieToEdit === undefined
       ? 'Please enter title'
       : movie.movieToEdit.title;
 
-  const release_date =
+  const releaseDate =
     movie.movieToEdit === undefined
       ? ''
       : movie.movieToEdit.release_date;
-  const movie_url =
+  const movieUrl =
     movie.movieToEdit === undefined
       ? ''
       : movie.movieToEdit.poster_path;
@@ -32,11 +31,7 @@ const AddMovie = (movie) => {
     movie.movieToEdit === undefined ? '' : movie.movieToEdit.runtime;
 
   const handleChange = (event) => {
-    this.setState({ value: event.target.value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
+    setValue(event.target.value);
   };
 
   return (
@@ -55,6 +50,7 @@ const AddMovie = (movie) => {
                 id="title"
                 placeholder="Enter movie title"
                 onChange={handleChange}
+                value={title}
               />
             </label>
           </section>
@@ -65,7 +61,7 @@ const AddMovie = (movie) => {
                 type="date"
                 onChange={handleChange}
                 placeholder="dd-mm-yyyy"
-                value={release_date}
+                value={releaseDate}
               />
             </label>
           </section>
@@ -76,7 +72,7 @@ const AddMovie = (movie) => {
                 type="text"
                 onChange={handleChange}
                 placeholder="Enter movie URL"
-                value={movie_url}
+                value={movieUrl}
               />
             </label>
           </section>
@@ -115,10 +111,10 @@ const AddMovie = (movie) => {
           </section>
         </form>
       </div>
-      <button role="reset" onClick={movie.onClose}>
+      <button role={roleReset} type="button" onClick={movie.onClose}>
         Reset
       </button>
-      <button role="search" onClick={movie.onClose}>
+      <button role={roleSearch} type="button" onClick={movie.onClose}>
         Submit
       </button>
     </section>
@@ -128,8 +124,12 @@ const AddMovie = (movie) => {
 export default AddMovie;
 
 AddMovie.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types,react/require-default-props
-  isShow: PropTypes.bool,
-  // eslint-disable-next-line react/require-default-props
-  onClose: PropTypes.func,
+  movie: PropTypes.shape({
+    isShow: PropTypes.bool,
+    onClose: PropTypes.func,
+  }),
+};
+
+AddMovie.defaultProps = {
+  movie: {},
 };

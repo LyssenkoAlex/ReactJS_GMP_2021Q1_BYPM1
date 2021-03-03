@@ -54,7 +54,7 @@ MovieCard.propTypes = {
     release_date: PropTypes.string,
     genres: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
-    poster_path: PropTypes.string
+    poster_path: PropTypes.string,
   }),
 };
 

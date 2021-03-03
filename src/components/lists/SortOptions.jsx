@@ -9,18 +9,14 @@ const SORT_OPTIONS = [
 ];
 
 const SortOptions = () =>
-  SORT_OPTIONS.map((option, index) => (
-    // eslint-disable-next-line react/no-array-index-key
-    <option key={`option_${index}`} value={option}>
+  SORT_OPTIONS.map((option) => (
+    <option key={`option_${option}`} value={option}>
       {option}
     </option>
   ));
-
-// ListOfYears.unshift(<option key={`year${ListOfYears.length + 1}`} selected value='RELEASE DATE'>RELEASE DATE</option>)
 
 export default SortOptions;
 
 SortOptions.propTypes = {
   option: PropTypes.string,
-  index: PropTypes.number,
 };

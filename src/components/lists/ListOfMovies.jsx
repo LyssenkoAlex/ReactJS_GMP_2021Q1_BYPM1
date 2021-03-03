@@ -45,7 +45,7 @@ const ListOfMovies = () => {
     <>
       {moviesList}
       {isShowEdit ? (
-        <AddMovie onClose={toggleShow} movieToEdit={movieToEdit} />
+        <AddMovie onClose={toggleShow} movie={movieToEdit} />
       ) : null}
       {isShowDelete ? (
         <DeleteMovie
