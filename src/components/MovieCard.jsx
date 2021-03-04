@@ -16,12 +16,17 @@ const MovieCard = (movie) => {
     movie.editMovie(movie.movie);
   };
 
+  const imgHandler = () => {
+    movie.setMovies.setMovie.setMovieDetails(movie.movie);
+  };
+
   return (
     <section className="movie_container">
       <img
         onError={addDefaultSrc}
         src={movie.movie.poster_path}
         alt="headline"
+        onClick={imgHandler}
       />
       <section className="movies_desc">
         <h3>{movie.movie.title}</h3>

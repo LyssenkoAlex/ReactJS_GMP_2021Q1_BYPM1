@@ -1,17 +1,12 @@
 import React from 'react';
 import ListOfMovies from './lists/ListOfMovies';
-import movies from '../data/movies.json';
+import MovieCounter from './MovieCounter';
 
-const Main = () => (
+const Main = (setMovie) => (
   <main>
-    <section className="movie_counter">
-      <h3>
-        {movies.length}
-        movies were found
-      </h3>
-    </section>
+    <MovieCounter />
     <section className="movies_wrapper">
-      <ListOfMovies />
+      <ListOfMovies setMovie={setMovie} />
     </section>
   </main>
 );

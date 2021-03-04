@@ -1,0 +1,28 @@
+.movie_details {
+  display: flex;
+  flex-flow: row;
+  img {
+    width: 300px;
+  }
+
+  .movies_desc {
+    h3 {
+      font-size: 40px;
+    }
+    .details_title {
+      display: flex;
+      h3 {
+        margin-left: 25px;
+      }
+    }
+    .year_time {
+      display: flex;
+      h3 {
+        margin-left: 25px;
+      }
+    }
+    .overview {
+      font-size: 28px;
+    }
+  }
+}

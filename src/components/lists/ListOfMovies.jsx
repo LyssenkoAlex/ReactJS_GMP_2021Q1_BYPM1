@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+/* eslint-disable prettier/prettier,react/jsx-indent-props,react/jsx-indent,react/jsx-closing-bracket-location */
+import React, { useState, useCallback, useEffect } from 'react';
 import movies from '../../data/movies.json';
 import MovieCard from '../MovieCard';
 import AddMovie from '../modals/AddMovie';
 import DeleteMovie from '../modals/DeleteMovie';
 
-const ListOfMovies = () => {
+const ListOfMovies = (setMovies) => {
   const [isShowEdit, setIsShowEdit] = useState(false);
   const [isShowDelete, setIsShowDelete] = useState(false);
   const [movieToEdit, setMovieToEdit] = useState(null);
+  const [movieList, setMovieList] = useState(null);
 
-  const toggleShow = () => {
+  const toggleShow = useCallback(() => {
     setIsShowEdit(!isShowEdit);
-  };
+  }, [isShowEdit]);
 
-  const toggleShowDelete = () => {
+  const toggleShowDelete = useCallback(() => {
     setIsShowDelete(!isShowDelete);
-  };
+  }, [isShowDelete]);
 
   const deleteMovie = (value) => {
     setMovieToEdit(value);
@@ -27,19 +29,23 @@ const ListOfMovies = () => {
     setIsShowEdit(!isShowEdit);
   };
 
-  // eslint-disable-next-line class-methods-use-this
+  useEffect(() => {
+    setMovieList(movies.slice(0, 21));
+  }, []);
 
-  const moviesList = movies
-    .slice(0, 21)
-    .map((movie) => (
-      <MovieCard
-        movie={movie}
-        onClose={toggleShow}
-        deleteMovie={deleteMovie}
-        editMovie={editMovie}
-        key={movie.id}
-      />
-    ));
+  const moviesList =
+    movieList === null
+      ? null
+      : movieList.map((movie) => (
+          <MovieCard
+            movie={movie}
+            onClose={toggleShow}
+            deleteMovie={deleteMovie}
+            editMovie={editMovie}
+            key={movie.id}
+            setMovies={setMovies}
+          />
+        ));
 
   return (
     <>

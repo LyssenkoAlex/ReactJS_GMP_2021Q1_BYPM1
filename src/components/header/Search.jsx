@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import AddMovie from './modals/AddMovie';
-import Logo from './utils/Logo';
+import AddMovie from '../modals/AddMovie';
+import Logo from '../utils/Logo';
 
-const Header = () => {
+const Search = () => {
   const [show, setShow] = useState(false);
   const addMovieRole = 'add_movie';
   const searchMovieRole = 'search_movie';
@@ -43,4 +43,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Search;
