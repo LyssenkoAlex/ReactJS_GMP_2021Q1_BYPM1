@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak,no-multiple-empty-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,7 +17,6 @@ const SortOptions = () =>
     </option>
   ));
 
-// ListOfYears.unshift(<option key={`year${ListOfYears.length + 1}`} selected value='RELEASE DATE'>RELEASE DATE</option>)
 
 export default SortOptions;
 

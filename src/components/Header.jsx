@@ -1,4 +1,4 @@
-/* eslint-disable react/button-has-type,jsx-a11y/no-interactive-element-to-noninteractive-role,react/destructuring-assignment,jsx-a11y/aria-role */
+/* eslint-disable react/button-has-type,jsx-a11y/no-interactive-element-to-noninteractive-role,react/destructuring-assignment,jsx-a11y/aria-role,max-len */
 /* eslint-disable-next-line jsx-a11y/aria-role */
 import React from 'react';
 import AddMovie from './modals/AddMovie';

@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid,no-undef,react/prop-types,react/destructuring-assignment,class-methods-use-this,no-param-reassign,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,react/sort-comp */
+/* eslint-disable jsx-a11y/anchor-is-valid,no-undef,react/prop-types,react/destructuring-assignment,class-methods-use-this,no-param-reassign,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,react/sort-comp,max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import imageNotFound from '../assets/img/image_not_found.jpg';

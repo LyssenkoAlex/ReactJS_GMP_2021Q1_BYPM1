@@ -1,13 +1,7 @@
-/* eslint-disable react/button-has-type,jsx-a11y/no-interactive-element-to-noninteractive-role,react/destructuring-assignment,jsx-a11y/aria-role,react/no-unused-state,class-methods-use-this,react/prop-types */
-// eslint-disable react/prefer-stateless-function
-// eslint-disable no-unused-expressions,react/prop-types
-// eslint-disable react/prop-types
-// eslint-disable react/require-default-props,react/no-unused-prop-types
-
+/* eslint-disable react/destructuring-assignment,react/prop-types,react/no-unused-state,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions,jsx-a11y/no-interactive-element-to-noninteractive-role,jsx-a11y/aria-role,react/button-has-type,max-len,class-methods-use-this */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
@@ -53,7 +47,6 @@ class AddMovie extends React.Component {
   render() {
     return (
       <section className="modal">
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
         <span className="close_mark" onClick={this.props.onClose}>
           &#10005;
         </span>

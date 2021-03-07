@@ -1,10 +1,9 @@
-/* eslint-disable react/no-array-index-key,jsx-a11y/anchor-is-valid,react/no-unused-state,react/no-unused-prop-types,react/require-default-props,react/destructuring-assignment,jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,no-return-assign,class-methods-use-this,no-param-reassign,prettier/prettier,no-unused-vars,no-undef,react/sort-comp */
-import React from "react";
-import PropTypes from "prop-types";
-import movies from "../../data/movies.json";
-import MovieCard from "../MovieCard";
-import AddMovie from "../modals/AddMovie";
-import DeleteMovie from "../modals/DeleteMovie";
+/* eslint-disable react/destructuring-assignment,no-undef,no-unused-vars */
+import React from 'react';
+import movies from '../../data/movies.json';
+import MovieCard from '../MovieCard';
+import AddMovie from '../modals/AddMovie';
+import DeleteMovie from '../modals/DeleteMovie';
 
 class ListOfMovies extends React.Component {
   constructor(props) {
@@ -12,13 +11,16 @@ class ListOfMovies extends React.Component {
     this.state = {
       isShowEdit: false,
       isShowDelete: false,
-      movieToEdit: null
+      movieToEdit: null,
     };
     this.toggleShow = this.toggleShow.bind(this);
     this.toggleShowDelete = this.toggleShowDelete.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
     this.editMovie = this.editMovie.bind(this);
+  }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('componentDidUpdate');
   }
 
   toggleShow() {
@@ -65,9 +67,6 @@ class ListOfMovies extends React.Component {
       </>
     );
   }
-
 }
 
-
 export default ListOfMovies;
-
