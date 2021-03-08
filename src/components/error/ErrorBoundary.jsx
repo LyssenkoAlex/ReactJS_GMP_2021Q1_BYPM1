@@ -1,7 +1,8 @@
-import React from 'react';
-import { AppFallbackUI } from './AppFallbackUI';
+/* eslint-disable quotes */
+import React from "react";
+import { AppFallbackUI } from "./AppFallbackUI";
 
-export class ErrorBoundary extends React.Component {
+class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { errorFound: false };

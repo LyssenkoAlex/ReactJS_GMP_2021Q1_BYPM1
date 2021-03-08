@@ -5,10 +5,8 @@
     "es6": true,
     "node": true
   },
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "extends": ["airbnb"],
   "rules": {
-    "prettier/prettier": ["error"],
     "import/no-extraneous-dependencies": 0,
     "react/jsx-filename-extension": 0
   }

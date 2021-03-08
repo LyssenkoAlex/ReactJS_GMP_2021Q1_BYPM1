@@ -1,9 +1,9 @@
-/* eslint-disable prettier/prettier,react/jsx-indent-props,react/jsx-indent,react/jsx-closing-bracket-location */
-import React, { useState, useCallback, useEffect } from 'react';
-import movies from '../../data/movies.json';
-import MovieCard from '../MovieCard';
-import AddMovie from '../modals/AddMovie';
-import DeleteMovie from '../modals/DeleteMovie';
+/* eslint-disable quotes,react/jsx-indent,operator-linebreak,indent */
+import React, { useState, useCallback, useEffect } from "react";
+import movies from "../../data/movies.json";
+import MovieCard from "../MovieCard";
+import AddMovie from "../modals/AddMovie";
+import DeleteMovie from "../modals/DeleteMovie";
 
 const ListOfMovies = (setMovies) => {
   const [isShowEdit, setIsShowEdit] = useState(false);
@@ -54,10 +54,7 @@ const ListOfMovies = (setMovies) => {
         <AddMovie onClose={toggleShow} movie={movieToEdit} />
       ) : null}
       {isShowDelete ? (
-        <DeleteMovie
-          onClose={toggleShowDelete}
-          movieToEdit={movieToEdit}
-        />
+        <DeleteMovie onClose={toggleShowDelete} movieToEdit={movieToEdit} />
       ) : null}
     </>
   );

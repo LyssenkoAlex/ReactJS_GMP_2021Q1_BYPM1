@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable quotes,implicit-arrow-linebreak */
+import React from "react";
+import PropTypes from "prop-types";
 
-const genres = ['ALL', 'DOCUMENTARY', 'COMEDY', 'HORROR', 'CRIME'];
+const genres = ["ALL", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"];
 
 const ListOfGenres = () =>
   genres.map((genre, index) => (

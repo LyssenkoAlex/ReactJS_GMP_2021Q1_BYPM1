@@ -1,34 +1,28 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions,quotes,operator-linebreak,max-len */
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const AddMovie = (movie) => {
-  const { roleReset } = 'reset';
-  const { roleSearch } = 'search';
+  const { roleReset } = "reset";
+  const { roleSearch } = "search";
 
   // eslint-disable-next-line no-unused-vars
   const [value, setValue] = useState(null);
   const title =
     movie.movieToEdit === undefined
-      ? 'Please enter title'
+      ? "Please enter title"
       : movie.movieToEdit.title;
 
   const releaseDate =
-    movie.movieToEdit === undefined
-      ? ''
-      : movie.movieToEdit.release_date;
+    movie.movieToEdit === undefined ? "" : movie.movieToEdit.release_date;
   const movieUrl =
-    movie.movieToEdit === undefined
-      ? ''
-      : movie.movieToEdit.poster_path;
+    movie.movieToEdit === undefined ? "" : movie.movieToEdit.poster_path;
   const genres =
-    movie.movieToEdit === undefined
-      ? ''
-      : movie.movieToEdit.genres.join();
+    movie.movieToEdit === undefined ? "" : movie.movieToEdit.genres.join();
   const overview =
-    movie.movieToEdit === undefined ? '' : movie.movieToEdit.overview;
+    movie.movieToEdit === undefined ? "" : movie.movieToEdit.overview;
   const runtime =
-    movie.movieToEdit === undefined ? '' : movie.movieToEdit.runtime;
+    movie.movieToEdit === undefined ? "" : movie.movieToEdit.runtime;
 
   const handleChange = (event) => {
     setValue(event.target.value);

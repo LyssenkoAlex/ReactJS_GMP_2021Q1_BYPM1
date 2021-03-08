@@ -1,18 +1,14 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions,max-len,quotes */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const DeleteMovie = (movie) => {
-  const { resetRole } = 'reset';
-  const { closeRole } = 'close';
+  const { resetRole } = "reset";
+  const { closeRole } = "close";
   return (
     <section className="modal">
-      <span
-        className="close_mark"
-        onClick={movie.onClose}
-        role={closeRole}
-      >
+      <span className="close_mark" onClick={movie.onClose} role={closeRole}>
         &#10005;
       </span>
       <h3>DELETE MOVIE</h3>

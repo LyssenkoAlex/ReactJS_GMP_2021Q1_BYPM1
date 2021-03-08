@@ -1,6 +1,7 @@
 .movie_details {
   display: flex;
   flex-flow: row;
+
   img {
     width: 300px;
   }
@@ -8,19 +9,42 @@
   .movies_desc {
     h3 {
       font-size: 40px;
+      color: #555555;
     }
+
+    .vote_average {
+      border-radius: 50%;
+      width: 75px;
+      height: 75px;
+      padding: 8px;
+      background: $black;
+      border: 2px solid #555555;
+      color: green;
+      text-align: center;
+      font: 42px Arial, sans-serif;
+      margin-left: 30px;
+    }
+
+
     .details_title {
       display: flex;
+      flex-flow: row;
+      align-items: center;
+
       h3 {
         margin-left: 25px;
       }
     }
+
     .year_time {
       display: flex;
+
       h3 {
         margin-left: 25px;
+        color: $red;
       }
     }
+
     .overview {
       font-size: 28px;
     }

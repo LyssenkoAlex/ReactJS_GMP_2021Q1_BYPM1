@@ -1,12 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable quotes,implicit-arrow-linebreak */
+import React from "react";
+import PropTypes from "prop-types";
 
-const SORT_OPTIONS = [
-  'Release date',
-  'Vote Average',
-  'Genres',
-  'Vote count',
-];
+const SORT_OPTIONS = ["Release date", "Vote Average", "Genres", "Vote count"];
 
 const SortOptions = () =>
   SORT_OPTIONS.map((option) => (

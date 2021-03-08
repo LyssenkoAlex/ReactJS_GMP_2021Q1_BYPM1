@@ -1,7 +1,7 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */
-import React from 'react';
-import PropTypes from 'prop-types';
-import imageNotFound from '../assets/img/image_not_found.jpg';
+/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,max-len,quotes */
+import React from "react";
+import PropTypes from "prop-types";
+import imageNotFound from "../assets/img/image_not_found.jpg";
 
 const MovieCard = (movie) => {
   const addDefaultSrc = (e) => {
@@ -31,7 +31,7 @@ const MovieCard = (movie) => {
       <section className="movies_desc">
         <h3>{movie.movie.title}</h3>
         <section className="second_line">
-          <h3>{movie.movie.genres.join(', ')}</h3>
+          <h3>{movie.movie.genres.join(", ")}</h3>
           <h4>{new Date(movie.movie.release_date).getFullYear()}</h4>
         </section>
       </section>
