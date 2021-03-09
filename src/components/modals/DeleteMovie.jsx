@@ -1,4 +1,3 @@
-/* eslint-disable react/prefer-stateless-function,jsx-a11y/click-events-have-key-events,react/destructuring-assignment,jsx-a11y/no-static-element-interactions,jsx-a11y/aria-role,react/no-unused-prop-types,react/prop-types,max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -30,8 +29,6 @@ class DeleteMovie extends React.Component {
 export default DeleteMovie;
 
 DeleteMovie.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   onClose: PropTypes.func,
-  // eslint-disable-next-line react/require-default-props
   isShow: PropTypes.bool,
 };

@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment,no-undef,no-unused-vars */
 import React from 'react';
 import movies from '../../data/movies.json';
 import MovieCard from '../MovieCard';
@@ -24,12 +23,10 @@ class ListOfMovies extends React.Component {
   }
 
   toggleShow() {
-    // eslint-disable-next-line react/no-access-state-in-setstate
     this.setState((state) => ({ isShowEdit: !state.isShowEdit }));
   }
 
   toggleShowDelete() {
-    // eslint-disable-next-line react/no-access-state-in-setstate
     this.setState((state) => ({ isShowDelete: !state.isShowDelete }));
   }
 
@@ -43,7 +40,6 @@ class ListOfMovies extends React.Component {
     this.setState((state) => ({ isShowEdit: !state.isShowEdit }));
   }
 
-  // eslint-disable-next-line class-methods-use-this
   render() {
     const moviesList = movies.slice(0, 21).map((movie) => (
       <MovieCard

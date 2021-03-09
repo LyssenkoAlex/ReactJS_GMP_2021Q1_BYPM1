@@ -13,12 +13,10 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    // eslint-disable-next-line react/destructuring-assignment
     if (this.state.errorFound) {
       return <AppFallbackUI />;
     }
 
-    // eslint-disable-next-line react/destructuring-assignment,react/prop-types
     return this.props.children;
   }
 }

@@ -8,13 +8,11 @@ const years = Array.from(
 
 const ListOfYears = () =>
   years.map((year, index) => (
-    // eslint-disable-next-line react/no-array-index-key
     <option key={`year_${index}`} value={year}>
       {year}
     </option>
   ));
 
-// ListOfYears.unshift(<option key={`year${ListOfYears.length + 1}`} selected value='RELEASE DATE'>RELEASE DATE</option>)
 
 export default ListOfYears;
 

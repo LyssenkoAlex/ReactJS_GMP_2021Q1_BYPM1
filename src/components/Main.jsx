@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved,react/jsx-one-expression-per-line */
 import React from 'react';
 import ListOfMovies from './lists/ListOfMovies';
 import movies from '../data/movies.json';

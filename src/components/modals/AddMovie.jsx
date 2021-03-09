@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment,react/prop-types,react/no-unused-state,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions,jsx-a11y/no-interactive-element-to-noninteractive-role,jsx-a11y/aria-role,react/button-has-type,max-len,class-methods-use-this */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -136,8 +135,6 @@ class AddMovie extends React.Component {
 export default AddMovie;
 
 AddMovie.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types,react/require-default-props
   isShow: PropTypes.bool,
-  // eslint-disable-next-line react/require-default-props
   onClose: PropTypes.func,
 };
