@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import AddMovie from '../modals/AddMovie';
-import Logo from '../utils/Logo';
+import React, { useState } from "react";
+import AddMovie from "../modals/AddMovie";
+import Logo from "../utils/Logo";
 
 const Search = () => {
   const [show, setShow] = useState(false);
-  const addMovieRole = 'add_movie';
-  const searchMovieRole = 'search_movie';
-  const searchRole = 'search';
+  const addMovieRole = "add_movie";
+  const searchMovieRole = "search_movie";
+  const searchRole = "search";
 
   return (
     <header>

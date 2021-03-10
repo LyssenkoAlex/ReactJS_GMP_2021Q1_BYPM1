@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import './sass/style.scss';
-import Main from './components/Main';
-import Header from './components/header/Header';
-import Footer from './components/Footer';
-import Navigation from './components/Navigation';
+import React, { useState } from "react";
+import "./sass/style.scss";
+import Main from "./components/Main";
+import Header from "./components/header/Header";
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
 // eslint-disable-next-line import/no-named-as-default
-import ErrorBoundary from './components/error/ErrorBoundary';
+import ErrorBoundary from "./components/error/ErrorBoundary";
 
 const App = () => {
   const [movieDetails, setMovieDetails] = useState(false);
@@ -16,9 +16,9 @@ const App = () => {
 
   return (
     <>
-      <Header moviedetails={movieDetails} />
+      <Header moviedetails={movieDetails} movieHandler={movieHandler} />
       <Navigation />
-      <Main setMovieDetails={movieHandler} />
+      <Main movieHandler={movieHandler} />
       <ErrorBoundary>
         <Footer />
       </ErrorBoundary>

@@ -1,4 +1,4 @@
-/* eslint-disable quotes,implicit-arrow-linebreak */
+/* eslint-disable implicit-arrow-linebreak */
 import React from "react";
 import PropTypes from "prop-types";
 

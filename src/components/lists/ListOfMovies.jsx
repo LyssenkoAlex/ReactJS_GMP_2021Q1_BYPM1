@@ -1,11 +1,14 @@
 /* eslint-disable quotes,react/jsx-indent,operator-linebreak,indent */
 import React, { useState, useCallback, useEffect } from "react";
+import PropTypes from "prop-types";
 import movies from "../../data/movies.json";
 import MovieCard from "../MovieCard";
 import AddMovie from "../modals/AddMovie";
 import DeleteMovie from "../modals/DeleteMovie";
 
-const ListOfMovies = (setMovies) => {
+const ListOfMovies = ({ movieHandler }) => {
+  console.log("LOM2: ", movieHandler);
+
   const [isShowEdit, setIsShowEdit] = useState(false);
   const [isShowDelete, setIsShowDelete] = useState(false);
   const [movieToEdit, setMovieToEdit] = useState(null);
@@ -43,7 +46,7 @@ const ListOfMovies = (setMovies) => {
             deleteMovie={deleteMovie}
             editMovie={editMovie}
             key={movie.id}
-            setMovies={setMovies}
+            movieHandler={movieHandler}
           />
         ));
 
@@ -61,3 +64,8 @@ const ListOfMovies = (setMovies) => {
 };
 
 export default ListOfMovies;
+
+// ListOfMovies.propTypes = {
+//   props: PropTypes.func.isRequired,
+//   movie: PropTypes.func.isRequired,
+// };

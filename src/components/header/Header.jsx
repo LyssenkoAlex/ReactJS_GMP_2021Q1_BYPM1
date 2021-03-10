@@ -1,6 +1,6 @@
-import React from 'react';
-import Search from './Search';
-import MovieDetails from '../MovieDetails';
+import React from "react";
+import Search from "./Search";
+import MovieDetails from "../MovieDetails";
 
 const Header = (movieDetails) => (
   <>

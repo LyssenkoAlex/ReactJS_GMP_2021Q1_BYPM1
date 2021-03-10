@@ -1,5 +1,5 @@
-import React from 'react';
-import Logo from './utils/Logo';
+import React from "react";
+import Logo from "./utils/Logo";
 
 const Footer = () => (
   <footer>

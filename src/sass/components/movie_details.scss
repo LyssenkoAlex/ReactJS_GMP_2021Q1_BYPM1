@@ -1,52 +1,72 @@
-.movie_details {
+.movie_wrapper {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
+  margin: 10px;
 
-  img {
-    width: 300px;
+  .header {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
   }
 
-  .movies_desc {
-    h3 {
-      font-size: 40px;
-      color: #555555;
+  .search_icon {
+    color: $red;
+    font-size: 28px;
+    transform: rotate(
+                    100deg
+    );
+  }
+
+  .movie_details {
+    display: flex;
+    flex-flow: row;
+
+    img {
+      width: 300px;
     }
 
-    .vote_average {
-      border-radius: 50%;
-      width: 75px;
-      height: 75px;
-      padding: 8px;
-      background: $black;
-      border: 2px solid #555555;
-      color: green;
-      text-align: center;
-      font: 42px Arial, sans-serif;
-      margin-left: 30px;
-    }
-
-
-    .details_title {
-      display: flex;
-      flex-flow: row;
-      align-items: center;
-
+    .movies_desc {
       h3 {
-        margin-left: 25px;
+        font-size: 40px;
+        color: #555555;
       }
-    }
 
-    .year_time {
-      display: flex;
-
-      h3 {
-        margin-left: 25px;
-        color: $red;
+      .vote_average {
+        border-radius: 50%;
+        width: 75px;
+        height: 75px;
+        padding: 8px;
+        background: $black;
+        border: 2px solid #555555;
+        color: green;
+        text-align: center;
+        font: 42px Arial, sans-serif;
+        margin-left: 30px;
       }
-    }
 
-    .overview {
-      font-size: 28px;
+
+      .details_title {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+
+        h3 {
+          margin-left: 25px;
+        }
+      }
+
+      .year_time {
+        display: flex;
+
+        h3 {
+          margin-left: 25px;
+          color: $red;
+        }
+      }
+
+      .overview {
+        font-size: 28px;
+      }
     }
   }
 }

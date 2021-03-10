@@ -8,6 +8,7 @@
   "extends": ["airbnb"],
   "rules": {
     "import/no-extraneous-dependencies": 0,
-    "react/jsx-filename-extension": 0
+    "react/jsx-filename-extension": 0,
+    "quotes": [2, "double", { "avoidEscape": true }]
   }
 }
