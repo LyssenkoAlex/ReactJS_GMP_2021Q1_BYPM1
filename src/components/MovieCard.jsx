@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,max-len,quotes */
 import React from "react";
 import PropTypes from "prop-types";
 import imageNotFound from "../assets/img/image_not_found.jpg";

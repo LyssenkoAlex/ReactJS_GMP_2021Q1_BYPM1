@@ -1,4 +1,4 @@
-/* eslint-disable quotes,react/jsx-indent,operator-linebreak,indent */
+/* eslint-disable react/jsx-indent,operator-linebreak,indent */
 import React, { useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import movies from "../../data/movies.json";
