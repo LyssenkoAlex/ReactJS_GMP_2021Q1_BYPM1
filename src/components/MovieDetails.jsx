@@ -1,18 +1,17 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
 import React from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./utils/Logo";
 import imageNotFound from "../assets/img/image_not_found.jpg";
 
-const MovieDetails = (moviedetails) => {
-  const movieYear = new Date(
-    moviedetails.moviedetails.moviedetails.release_date
-  ).getFullYear();
-  const movieDuration = `${moviedetails.moviedetails.moviedetails.runtime} min`;
+const MovieDetails = ({ movieDetails, movieHandler }) => {
+  const movieYear = new Date(movieDetails.release_date).getFullYear();
+  const movieDuration = `${movieDetails.runtime} min`;
 
   const searchIconHandler = () => {
-    moviedetails.moviedetails.movieHandler(null);
+    movieHandler(null);
   };
 
   const addDefaultSrc = (e) => {
@@ -29,23 +28,21 @@ const MovieDetails = (moviedetails) => {
       </section>
       <section className="movie_details">
         <img
-          src={moviedetails.moviedetails.moviedetails.poster_path}
+          src={movieDetails.poster_path}
           alt="headline"
           onError={addDefaultSrc}
         />
         <section className="movies_desc">
           <div className="details_title">
-            <h3>{moviedetails.moviedetails.moviedetails.title}</h3>
-            <div className="vote_average">
-              {moviedetails.moviedetails.moviedetails.vote_average}
-            </div>
+            <h3>{movieDetails.title}</h3>
+            <div className="vote_average">{movieDetails.vote_average}</div>
           </div>
           <div className="year_time">
             <h3>{movieYear}</h3>
             <h3>{movieDuration}</h3>
           </div>
           <div className="overview">
-            <p>{moviedetails.moviedetails.moviedetails.overview}</p>
+            <p>{movieDetails.overview}</p>
           </div>
         </section>
       </section>
@@ -54,3 +51,21 @@ const MovieDetails = (moviedetails) => {
 };
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  movieDetails: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    release_date: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    runtime: PropTypes.number,
+    vote_average: PropTypes.number,
+    poster_path: PropTypes.string,
+  }),
+  movieHandler: PropTypes.func.isRequired,
+};
+
+MovieDetails.defaultProps = {
+  movieDetails: null,
+};

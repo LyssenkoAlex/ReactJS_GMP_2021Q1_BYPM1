@@ -7,8 +7,6 @@ import AddMovie from "../modals/AddMovie";
 import DeleteMovie from "../modals/DeleteMovie";
 
 const ListOfMovies = ({ movieHandler }) => {
-  console.log("LOM2: ", movieHandler);
-
   const [isShowEdit, setIsShowEdit] = useState(false);
   const [isShowDelete, setIsShowDelete] = useState(false);
   const [movieToEdit, setMovieToEdit] = useState(null);
@@ -42,11 +40,11 @@ const ListOfMovies = ({ movieHandler }) => {
       : movieList.map((movie) => (
           <MovieCard
             movie={movie}
-            onClose={toggleShow}
             deleteMovie={deleteMovie}
             editMovie={editMovie}
-            key={movie.id}
             movieHandler={movieHandler}
+            key={movie.id}
+            onClose={toggleShow}
           />
         ));
 
@@ -65,7 +63,6 @@ const ListOfMovies = ({ movieHandler }) => {
 
 export default ListOfMovies;
 
-// ListOfMovies.propTypes = {
-//   props: PropTypes.func.isRequired,
-//   movie: PropTypes.func.isRequired,
-// };
+ListOfMovies.propTypes = {
+  movieHandler: PropTypes.func.isRequired,
+};

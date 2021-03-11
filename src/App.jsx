@@ -8,7 +8,7 @@ import Navigation from "./components/Navigation";
 import ErrorBoundary from "./components/error/ErrorBoundary";
 
 const App = () => {
-  const [movieDetails, setMovieDetails] = useState(false);
+  const [movieDetails, setMovieDetails] = useState(null);
 
   const movieHandler = (movie) => {
     setMovieDetails(movie);
@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <>
-      <Header moviedetails={movieDetails} movieHandler={movieHandler} />
+      <Header movieDetails={movieDetails} movieHandler={movieHandler} />
       <Navigation />
       <Main movieHandler={movieHandler} />
       <ErrorBoundary>
