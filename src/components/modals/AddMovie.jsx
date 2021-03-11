@@ -1,10 +1,8 @@
+/* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role,jsx-a11y/aria-role */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const AddMovie = (movie) => {
-  const { roleReset } = "reset";
-  const { roleSearch } = "search";
-
   // eslint-disable-next-line no-unused-vars
   const [value, setValue] = useState(null);
   const title =
@@ -104,10 +102,10 @@ const AddMovie = (movie) => {
           </section>
         </form>
       </div>
-      <button role={roleReset} type="button" onClick={movie.onClose}>
+      <button role="search" type="button" onClick={movie.onClose}>
         Reset
       </button>
-      <button role={roleSearch} type="button" onClick={movie.onClose}>
+      <button role="reset" type="button" onClick={movie.onClose}>
         Submit
       </button>
     </section>
