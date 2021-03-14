@@ -1,16 +1,15 @@
 /* eslint-disable react/jsx-indent,operator-linebreak,indent */
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
-import movies from "../../data/movies.json";
 import MovieCard from "../MovieCard";
 import AddMovie from "../modals/AddMovie";
 import DeleteMovie from "../modals/DeleteMovie";
+import useLoadMovies from "./UseLoadMovies";
 
 const ListOfMovies = ({ movieHandler }) => {
   const [isShowEdit, setIsShowEdit] = useState(false);
   const [isShowDelete, setIsShowDelete] = useState(false);
   const [movieToEdit, setMovieToEdit] = useState(null);
-  const [movieList, setMovieList] = useState(null);
 
   const toggleShow = useCallback(() => {
     setIsShowEdit(!isShowEdit);
@@ -30,27 +29,23 @@ const ListOfMovies = ({ movieHandler }) => {
     setIsShowEdit(!isShowEdit);
   };
 
-  useEffect(() => {
-    setMovieList(movies.slice(0, 21));
-  }, []);
+  const [images, loading] = useLoadMovies(1);
 
-  const moviesList =
-    movieList === null
-      ? null
-      : movieList.map((movie) => (
-          <MovieCard
-            movie={movie}
-            deleteMovie={deleteMovie}
-            editMovie={editMovie}
-            movieHandler={movieHandler}
-            key={movie.id}
-            onClose={toggleShow}
-          />
-        ));
+  const movieCards = images.map((movie) => (
+    <MovieCard
+      movie={movie}
+      deleteMovie={deleteMovie}
+      editMovie={editMovie}
+      movieHandler={movieHandler}
+      key={movie.id}
+      onClose={toggleShow}
+    />
+  ));
 
   return (
     <>
-      {moviesList}
+      {loading && "Loading..."}
+      {movieCards}
       {isShowEdit ? (
         <AddMovie onClose={toggleShow} movie={movieToEdit} />
       ) : null}
