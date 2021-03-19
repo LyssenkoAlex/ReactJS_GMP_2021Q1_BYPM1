@@ -1,17 +1,14 @@
 /* eslint-disable react/jsx-indent,operator-linebreak,indent */
-import React, {useState, useCallback, useEffect} from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../MovieCard";
 import AddMovie from "../modals/AddMovie";
 import DeleteMovie from "../modals/DeleteMovie";
 
-const ListOfMovies = props => {
+const ListOfMovies = (props) => {
   const [isShowEdit, setIsShowEdit] = useState(false);
   const [isShowDelete, setIsShowDelete] = useState(false);
   const [movieToEdit, setMovieToEdit] = useState(null);
-
-  console.log('props: ', props)
-
 
   const toggleShow = useCallback(() => {
     setIsShowEdit(!isShowEdit);

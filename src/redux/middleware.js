@@ -1,47 +1,45 @@
-import axios from 'axios';
-import { API } from './actions/types';
-import { apiEnd, apiStart, apiError } from './actions/api';
+import axios from "axios";
+import { API } from "./actions/types";
+import { apiEnd, apiStart, apiError } from "./actions/api";
 
-const apiMiddleware = ({ dispatch }) => next => action => {
-    next(action);
+const apiMiddleware = ({ dispatch }) => (next) => (action) => {
+  next(action);
 
-    if (action.type !== API) { // only apply middleware to actions of type API
-        return;
-    }
+  if (action.type !== API) { // only apply middleware to actions of type API
+    return;
+  }
 
-    const { url, method, data, onSuccess, onFailure, label } = action.payload;
+  const { url, method, data, onSuccess, onFailure, label } = action.payload;
 
-    // Adds support to POST and PUT requests with data
-    const dataOrParams = ['GET', 'DELETE'].includes(method) ? 'params' : 'data';
+  // Adds support to POST and PUT requests with data
+  const dataOrParams = ["GET", "DELETE"].includes(method) ? "params" : "data";
 
-    // axios configs
-    axios.defaults.headers.common['Content-Type'] = 'application/json';
+  // axios configs
+  axios.defaults.headers.common["Content-Type"] = "application/json";
 
-    if (label) {
-        dispatch(apiStart(label)); // Action to notify that the api call is starting.
-    }
-    console.log('RUN axios: ', url);
-    axios
-        .request({
-            url,
-            method,
-            [dataOrParams]: data
-        })
-        .then(({ data }) => {
-            console.log('onSuccess t6: ', data.data.length)
-            dispatch(onSuccess(data.data));
-        })
-        .catch(error => {
-            dispatch(apiError(error));
-            // Original apiAction executor's error handler. e.g. Fn passed inside fetchPosts action.
-            dispatch(onFailure(error));
-        })
-        .finally(() => {
-            if (label) {
-                // Action to notify that the api call has ended.
-                dispatch(apiEnd(label));
-            }
-        });
+  if (label) {
+    dispatch(apiStart(label)); // Action to notify that the api call is starting.
+  }
+  axios
+    .request({
+      url,
+      method,
+      [dataOrParams]: data,
+    })
+    .then(({ data }) => {
+      dispatch(onSuccess(data.data));
+    })
+    .catch((error) => {
+      dispatch(apiError(error));
+      // Original apiAction executor's error handler. e.g. Fn passed inside fetchPosts action.
+      dispatch(onFailure(error));
+    })
+    .finally(() => {
+      if (label) {
+        // Action to notify that the api call has ended.
+        dispatch(apiEnd(label));
+      }
+    });
 };
 
 export default apiMiddleware;
