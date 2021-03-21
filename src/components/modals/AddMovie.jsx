@@ -1,8 +1,10 @@
-/* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role,jsx-a11y/aria-role */
+// eslint-disable-next-line max-len
+/* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role,jsx-a11y/aria-role,jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import axios from "axios";
 
 import PropTypes from "prop-types";
+import DropDown from "../utils/DropDown";
 
 const AddMovie = (movie) => {
   // eslint-disable-next-line no-unused-vars
@@ -19,9 +21,29 @@ const AddMovie = (movie) => {
     setValues((oldValues) => ({ ...oldValues, [name]: value }));
   };
 
+  const [checkedItems, setCheckedItems] = useState({});
+
+  const handleCheckBoxChange = (event) => {
+    setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
+  };
+
   const handleChange = (event) => {
     event.preventDefault();
-    console.log("new vals: ", values);
+    console.log("checkedItems: ", checkedItems);
+    const fields = Object.keys(checkedItems);
+    const h = [];
+    fields.forEach((x) => {
+      console.log("x: ", x);
+      if (checkedItems[x]) {
+        h.push(x);
+      }
+    });
+
+    console.log("before: ", values);
+    values.genres = h;
+    values.runtime = Number.parseInt(values.runtime);
+    console.log("sss: ", values);
+
     axios.post("http://localhost:4000/movies", values)
       .then((res) => {
         console.log("value: ", res);
@@ -76,16 +98,11 @@ const AddMovie = (movie) => {
               />
             </label>
           </section>
-          <section>
-            <label htmlFor="title">
+          <section className="drop_down_container">
+            <label>
               <span>GENRE</span>
-              <input
-                type="text"
-                value={values.genres}
-                onChange={set("genres")}
-                placeholder="Select genre"
-              />
             </label>
+            <DropDown handleCheckBoxChange={handleCheckBoxChange} checkedItems={checkedItems} />
           </section>
           <section>
             <label htmlFor="title">

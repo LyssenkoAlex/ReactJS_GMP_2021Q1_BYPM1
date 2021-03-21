@@ -73,6 +73,7 @@ h2 {
 }
 
 .modal {
+  overflow-y: auto;
   width: 500px;
   transition: 1.1s ease-out;
   box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
@@ -121,7 +122,7 @@ h2 {
 
 
   }
-  input[type=text], input[type=date], select {
+  input[type=text], input[type=date],  input[type=number], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
