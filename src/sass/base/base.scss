@@ -40,7 +40,7 @@ button[role='add_movie'] {
 }
 
 button[role='search'] {
-  background-color: $red;
+  background-color: $black;
   color: $white;
 }
 
@@ -73,6 +73,8 @@ h2 {
 }
 
 .modal {
+  max-height: calc(100vh - 20px);
+  overflow-y: auto;
   width: 500px;
   transition: 1.1s ease-out;
   box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
@@ -118,10 +120,9 @@ h2 {
     border-top: 1px solid #ccc;
     background: #eee;
     padding: 0.5rem 1rem;
-
-
   }
-  input[type=text], input[type=date], select {
+
+  input[type=text], input[type=date], input[type=number], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -137,12 +138,33 @@ h2 {
     font-size: larger;
     font-weight: 300;
   }
-
-
 }
 
 .close_mark {
   font-size: 30px;
   margin: 15px;
   cursor: pointer;
+}
+
+form {
+  input[type='submit'] {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    line-height: 1;
+    font-family: "ProximaNova-Bold", Arial, sans-serif;
+    min-width: 170px;
+    height: 48px;
+    transition: background 100ms, box-shadow 85ms, transform 85ms;
+    transition-timing-function: ease-in-out;
+    box-shadow: 7px 11px 19px 0 rgb(0 0 0 / 35%);
+    text-transform: uppercase;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 6px;
+    margin-left: 12px;
+    background-color: $red;
+  }
+
 }

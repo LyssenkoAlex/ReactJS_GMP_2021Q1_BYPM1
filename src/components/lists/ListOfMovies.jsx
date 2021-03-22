@@ -25,6 +25,7 @@ const ListOfMovies = ({ movieHandler }) => {
   };
 
   const editMovie = (value) => {
+    console.log("editMovie: ", value);
     setMovieToEdit(value);
     setIsShowEdit(!isShowEdit);
   };

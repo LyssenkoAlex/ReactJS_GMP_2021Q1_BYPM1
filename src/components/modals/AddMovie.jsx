@@ -2,32 +2,28 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-const AddMovie = (movie) => {
-  // eslint-disable-next-line no-unused-vars
-  const [value, setValue] = useState(null);
-  const title =
-    movie.movieToEdit === undefined
-      ? "Please enter title"
-      : movie.movieToEdit.title;
-
-  const releaseDate =
-    movie.movieToEdit === undefined ? "" : movie.movieToEdit.release_date;
-  const movieUrl =
-    movie.movieToEdit === undefined ? "" : movie.movieToEdit.poster_path;
-  const genres =
-    movie.movieToEdit === undefined ? "" : movie.movieToEdit.genres.join();
-  const overview =
-    movie.movieToEdit === undefined ? "" : movie.movieToEdit.overview;
-  const runtime =
-    movie.movieToEdit === undefined ? "" : movie.movieToEdit.runtime;
+const AddMovie = ({ onClose, movie }) => {
+  const [values, setValues] = useState({
+    title: movie.title === undefined ? "" : movie.title,
+    release_date: movie.release_date === undefined ? "" : movie.release_date,
+    poster_path: movie.poster_path === undefined ? "" : movie.poster_path,
+    genres: movie.genres === undefined ? "" : movie.genres.join(),
+    overview: movie.overview === undefined ? "" : movie.overview,
+    runtime: movie.runtime === undefined ? "" : movie.runtime,
+  });
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    console.log("value: ", values);
+    event.preventDefault();
+  };
+
+  const set = (name) => ({ target: { value } }) => {
+    setValues((oldValues) => ({ ...oldValues, [name]: value }));
   };
 
   return (
     <section className="modal">
-      <span className="close_mark" onClick={movie.onClose}>
+      <span className="close_mark" onClick={onClose}>
         &#10005;
       </span>
       <h3>ADD MOVIE</h3>
@@ -40,8 +36,8 @@ const AddMovie = (movie) => {
                 type="text"
                 id="title"
                 placeholder="Enter movie title"
-                onChange={handleChange}
-                value={title}
+                onChange={set("title")}
+                value={values.title}
               />
             </label>
           </section>
@@ -50,9 +46,9 @@ const AddMovie = (movie) => {
               <span>RELEASE DATE</span>
               <input
                 type="date"
-                onChange={handleChange}
+                onChange={set("release_date")}
                 placeholder="dd-mm-yyyy"
-                value={releaseDate}
+                value={values.release_date}
               />
             </label>
           </section>
@@ -61,9 +57,9 @@ const AddMovie = (movie) => {
               <span>MOVIE URL</span>
               <input
                 type="text"
-                onChange={handleChange}
+                onChange={set("poster_path")}
                 placeholder="Enter movie URL"
-                value={movieUrl}
+                value={values.poster_path}
               />
             </label>
           </section>
@@ -72,9 +68,9 @@ const AddMovie = (movie) => {
               <span>GENRE</span>
               <input
                 type="text"
-                value={genres}
-                onChange={handleChange}
                 placeholder="Select genre"
+                onChange={set("title")}
+                value={values.genres}
               />
             </label>
           </section>
@@ -84,8 +80,8 @@ const AddMovie = (movie) => {
               <input
                 type="text"
                 placeholder="Overview here"
-                onChange={handleChange}
-                value={overview}
+                onChange={set("overview")}
+                value={values.overview}
               />
             </label>
           </section>
@@ -93,21 +89,23 @@ const AddMovie = (movie) => {
             <label htmlFor="title">
               <span>RUNTIME</span>
               <input
-                type="text"
+                type="number"
                 placeholder="Runtime here"
-                onChange={handleChange}
-                value={runtime}
+                onChange={set("runtime")}
+                value={values.runtime}
+                min="0"
+                max="10000"
               />
             </label>
           </section>
+          <button role="search" type="button" onClick={onClose}>
+            Reset
+          </button>
+          <button role="reset" type="button" onClick={handleChange}>
+            Submit
+          </button>
         </form>
       </div>
-      <button role="search" type="button" onClick={movie.onClose}>
-        Reset
-      </button>
-      <button role="reset" type="button" onClick={movie.onClose}>
-        Submit
-      </button>
     </section>
   );
 };
@@ -117,8 +115,14 @@ export default AddMovie;
 AddMovie.propTypes = {
   movie: PropTypes.shape({
     isShow: PropTypes.bool,
-    onClose: PropTypes.func,
+    release_date: PropTypes.string,
+    title: PropTypes.string,
+    poster_path: PropTypes.string,
+    overview: PropTypes.string,
+    runtime: PropTypes.number,
+    genres: PropTypes.arrayOf(PropTypes.string),
   }),
+  onClose: PropTypes.func.isRequired,
 };
 
 AddMovie.defaultProps = {

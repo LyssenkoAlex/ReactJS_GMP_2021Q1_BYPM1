@@ -11,6 +11,7 @@ const App = () => {
   const [movieDetails, setMovieDetails] = useState(null);
 
   const movieHandler = (movie) => {
+    console.log("movieHandler: ", movieHandler);
     setMovieDetails(movie);
   };
 
