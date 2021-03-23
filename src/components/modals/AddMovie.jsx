@@ -3,12 +3,15 @@
 import React, { useState } from "react";
 
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DropDown from "../utils/DropDown";
 import { createMovie } from "../../redux/actions/actions";
 
 const AddMovie = (movie) => {
   // eslint-disable-next-line no-unused-vars
+
+  const creationStatus = useSelector((state) => state.post_movie_desc);
+
   const [values, setValues] = useState({
     title: movie.movieToEdit === undefined ? "" : movie.movieToEdit.title,
     release_date: movie.movieToEdit === undefined ? "" : movie.movieToEdit.release_date,
@@ -17,6 +20,9 @@ const AddMovie = (movie) => {
     overview: movie.movieToEdit === undefined ? "" : movie.movieToEdit.overview,
     runtime: movie.movieToEdit === undefined ? "" : movie.movieToEdit.runtime,
   });
+
+  const [showMovieModal, setShowMovieModal] = useState(false);
+
   const dispatch = useDispatch();
 
   const set = (name) => ({ target: { value } }) => {
@@ -31,6 +37,7 @@ const AddMovie = (movie) => {
 
   const handleChange = (event) => {
     event.preventDefault();
+    setShowMovieModal(true);
     const fields = Object.keys(checkedItems);
     const h = [];
     fields.forEach((x) => {
@@ -41,104 +48,96 @@ const AddMovie = (movie) => {
 
     values.genres = h;
     values.runtime = Number.parseInt(values.runtime, 10);
-    /*
-    axios.post("http://localhost:4000/movies", values)
-      .then((res) => {
-        console.log("value: ", res);
-        console.log("data: ", res.data);
-      })
-      .catch((error) => {
-        console.log("er1: ", error.response.data);
-        console.log("er2: ", error.response.status);
-        console.log("er3: ", error.response.headers);
-      });
-
-    */
-
     dispatch(createMovie(values));
   };
 
   return (
-    <section className="modal">
-      <span className="close_mark" onClick={movie.onClose}>
-        &#10005;
-      </span>
-      <h3>ADD MOVIE</h3>
-      <div className="content">
-        <form>
-          <section>
-            <label htmlFor="title">
-              <span>TITLE</span>
-              <input
-                type="text"
-                id="title"
-                placeholder="Enter movie title"
-                onChange={set("title")}
-                value={values.title}
-              />
-            </label>
-          </section>
-          <section>
-            <label htmlFor="title">
-              <span>RELEASE DATE</span>
-              <input
-                type="date"
-                onChange={set("release_date")}
-                placeholder="dd-mm-yyyy"
-                value={values.release_date}
-              />
-            </label>
-          </section>
-          <section>
-            <label htmlFor="title">
-              <span>MOVIE URL</span>
-              <input
-                type="text"
-                onChange={set("poster_path")}
-                placeholder="Enter movie URL"
-                value={values.poster_path}
-              />
-            </label>
-          </section>
-          <section className="drop_down_container">
-            <label>
-              <span>GENRE</span>
-            </label>
-            <DropDown handleCheckBoxChange={handleCheckBoxChange} checkedItems={checkedItems} />
-          </section>
-          <section>
-            <label htmlFor="title">
-              <span>OVERVIEW</span>
-              <input
-                type="text"
-                placeholder="Overview here"
-                onChange={set("overview")}
-                value={values.overview}
-              />
-            </label>
-          </section>
-          <section>
-            <label htmlFor="title">
-              <span>RUNTIME</span>
-              <input
-                type="number"
-                placeholder="Runtime here"
-                onChange={set("runtime")}
-                value={values.runtime}
-                min="0"
-                max="10000"
-              />
-            </label>
-          </section>
-        </form>
-      </div>
-      <button role="search" type="button" onClick={movie.onClose}>
-        Reset
-      </button>
-      <button role="reset" type="button" onClick={handleChange}>
-        Submit
-      </button>
-    </section>
+    <>
+      <section className="modal">
+        <span className="close_mark" onClick={movie.onClose}>
+          &#10005;
+        </span>
+        <h3>ADD MOVIE</h3>
+        <div className="content">
+          <form>
+            <section>
+              <label htmlFor="title">
+                <span>TITLE</span>
+                <input
+                  type="text"
+                  id="title"
+                  placeholder="Enter movie title"
+                  onChange={set("title")}
+                  value={values.title}
+                />
+              </label>
+            </section>
+            <section>
+              <label htmlFor="title">
+                <span>RELEASE DATE</span>
+                <input
+                  type="date"
+                  onChange={set("release_date")}
+                  placeholder="dd-mm-yyyy"
+                  value={values.release_date}
+                />
+              </label>
+            </section>
+            <section>
+              <label htmlFor="title">
+                <span>MOVIE URL</span>
+                <input
+                  type="text"
+                  onChange={set("poster_path")}
+                  placeholder="Enter movie URL"
+                  value={values.poster_path}
+                />
+              </label>
+            </section>
+            <section className="drop_down_container">
+              <label>
+                <span>GENRE</span>
+              </label>
+              <DropDown handleCheckBoxChange={handleCheckBoxChange} checkedItems={checkedItems} />
+            </section>
+            <section>
+              <label htmlFor="title">
+                <span>OVERVIEW</span>
+                <input
+                  type="text"
+                  placeholder="Overview here"
+                  onChange={set("overview")}
+                  value={values.overview}
+                />
+              </label>
+            </section>
+            <section>
+              <label htmlFor="title">
+                <span>RUNTIME</span>
+                <input
+                  type="number"
+                  placeholder="Runtime here"
+                  onChange={set("runtime")}
+                  value={values.runtime}
+                  min="0"
+                  max="10000"
+                />
+              </label>
+            </section>
+          </form>
+        </div>
+        <button role="search" type="button" onClick={movie.onClose}>
+          Reset
+        </button>
+        <button role="reset" type="button" onClick={handleChange}>
+          Submit
+        </button>
+      </section>
+      <section className="modal" style={{ display: showMovieModal ? "block" : "none" }}>
+        <h3>Movie creation result:</h3>
+        <h3>{creationStatus}</h3>
+      </section>
+    </>
   );
 };
 
