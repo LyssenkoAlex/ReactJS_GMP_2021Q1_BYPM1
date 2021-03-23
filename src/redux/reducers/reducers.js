@@ -1,10 +1,12 @@
-import { SET_POSTS, API_START, API_END, FETCH_POSTS } from "../actions/types";
+import { SET_POSTS, API_START, API_END, FETCH_POSTS, POST_MOVIE } from "../actions/types";
 
 // eslint-disable-next-line consistent-return
-function reducer(state = { data: [] }, action) {
+function reducer(state = { data: [], total_amount: 0 }, action) {
   switch (action.type) {
     case SET_POSTS:
-      return { data: action.payload };
+      return { data: action.payload.data.data, total_amount: action.payload.data.totalAmount };
+    case POST_MOVIE:
+      return { ...state };
     case API_START:
       if (action.payload === FETCH_POSTS) {
         return {
@@ -21,6 +23,7 @@ function reducer(state = { data: [] }, action) {
         };
       }
       break;
+
     default:
       return state;
   }

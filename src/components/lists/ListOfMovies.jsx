@@ -5,11 +5,10 @@ import MovieCard from "../MovieCard";
 import AddMovie from "../modals/AddMovie";
 import DeleteMovie from "../modals/DeleteMovie";
 
-const ListOfMovies = (props) => {
+const ListOfMovies = ({ data, isFetching, movieHandler }) => {
   const [isShowEdit, setIsShowEdit] = useState(false);
   const [isShowDelete, setIsShowDelete] = useState(false);
   const [movieToEdit, setMovieToEdit] = useState(null);
-
   const toggleShow = useCallback(() => {
     setIsShowEdit(!isShowEdit);
   }, [isShowEdit]);
@@ -28,13 +27,13 @@ const ListOfMovies = (props) => {
     setIsShowEdit(!isShowEdit);
   };
 
-  const movieCards = props.data.map((movie) => (
+  const movieCards = data.map((movie) => (
     <MovieCard
       movie={movie}
       deleteMovie={deleteMovie}
       editMovie={editMovie}
       key={movie.id}
-      movieHandler={props.movieHandler}
+      movieHandler={movieHandler}
       onClose={toggleShow}
     />
   ));
@@ -56,4 +55,11 @@ export default ListOfMovies;
 
 ListOfMovies.propTypes = {
   movieHandler: PropTypes.func.isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    release_date: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string,
+    poster_path: PropTypes.string,
+  })).isRequired,
 };

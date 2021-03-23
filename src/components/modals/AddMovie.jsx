@@ -1,10 +1,11 @@
 // eslint-disable-next-line max-len
 /* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role,jsx-a11y/aria-role,jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
-import axios from "axios";
 
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 import DropDown from "../utils/DropDown";
+import { createMovie } from "../../redux/actions/actions";
 
 const AddMovie = (movie) => {
   // eslint-disable-next-line no-unused-vars
@@ -16,6 +17,7 @@ const AddMovie = (movie) => {
     overview: movie.movieToEdit === undefined ? "" : movie.movieToEdit.overview,
     runtime: movie.movieToEdit === undefined ? "" : movie.movieToEdit.runtime,
   });
+  const dispatch = useDispatch();
 
   const set = (name) => ({ target: { value } }) => {
     setValues((oldValues) => ({ ...oldValues, [name]: value }));
@@ -29,21 +31,17 @@ const AddMovie = (movie) => {
 
   const handleChange = (event) => {
     event.preventDefault();
-    console.log("checkedItems: ", checkedItems);
     const fields = Object.keys(checkedItems);
     const h = [];
     fields.forEach((x) => {
-      console.log("x: ", x);
       if (checkedItems[x]) {
         h.push(x);
       }
     });
 
-    console.log("before: ", values);
     values.genres = h;
-    values.runtime = Number.parseInt(values.runtime);
-    console.log("sss: ", values);
-
+    values.runtime = Number.parseInt(values.runtime, 10);
+    /*
     axios.post("http://localhost:4000/movies", values)
       .then((res) => {
         console.log("value: ", res);
@@ -54,6 +52,10 @@ const AddMovie = (movie) => {
         console.log("er2: ", error.response.status);
         console.log("er3: ", error.response.headers);
       });
+
+    */
+
+    dispatch(createMovie(values));
   };
 
   return (
