@@ -6,11 +6,13 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import DropDown from "../utils/DropDown";
 import { createMovie } from "../../redux/actions/actions";
+import ModalWindow from "../utils/ModalWindow";
 
 const AddMovie = (movie) => {
   // eslint-disable-next-line no-unused-vars
 
   const creationStatus = useSelector((state) => state.post_movie_desc);
+  const errorBody = useSelector((state) => state.error_body);
 
   const [values, setValues] = useState({
     title: movie.movieToEdit === undefined ? "" : movie.movieToEdit.title,
@@ -21,7 +23,7 @@ const AddMovie = (movie) => {
     runtime: movie.movieToEdit === undefined ? "" : movie.movieToEdit.runtime,
   });
 
-  const [showMovieModal, setShowMovieModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -35,9 +37,13 @@ const AddMovie = (movie) => {
     setCheckedItems({ ...checkedItems, [event.target.name]: event.target.checked });
   };
 
+  const handleShowModal = () => {
+    setShowModal(!showModal);
+  };
+
   const handleChange = (event) => {
     event.preventDefault();
-    setShowMovieModal(true);
+
     const fields = Object.keys(checkedItems);
     const h = [];
     fields.forEach((x) => {
@@ -49,6 +55,7 @@ const AddMovie = (movie) => {
     values.genres = h;
     values.runtime = Number.parseInt(values.runtime, 10);
     dispatch(createMovie(values));
+    handleShowModal();
   };
 
   return (
@@ -133,17 +140,21 @@ const AddMovie = (movie) => {
           Submit
         </button>
       </section>
-      <section className="modal" style={{ display: showMovieModal ? "block" : "none" }}>
-        <h3>Movie creation result:</h3>
-        <h3>{creationStatus}</h3>
-      </section>
+      <ModalWindow
+        title="Movie creation result:"
+        actionStatus={creationStatus}
+        errorDesc={errorBody}
+        handleShowModal={handleShowModal}
+        showModal={showModal}
+      />
     </>
   );
 };
 
 export default AddMovie;
 
-AddMovie.propTypes = {
+AddMovie.propTypes =
+{
   movie: PropTypes.shape({
     isShow: PropTypes.bool,
     onClose: PropTypes.func,

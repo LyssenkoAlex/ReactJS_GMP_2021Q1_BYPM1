@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import imageNotFound from "../assets/img/image_not_found.jpg";
 
-const MovieCard = ({ movie, deleteMovie, editMovie, movieHandler}) => {
+const MovieCard = ({ movie, deleteMovie, editMovie, movieHandler }) => {
   const addDefaultSrc = (e) => {
     e.target.src = imageNotFound;
   };
@@ -62,6 +62,7 @@ MovieCard.propTypes = {
   }),
   deleteMovie: PropTypes.func.isRequired,
   editMovie: PropTypes.func.isRequired,
+  movieHandler: PropTypes.func.isRequired,
 };
 
 MovieCard.defaultProps = {
