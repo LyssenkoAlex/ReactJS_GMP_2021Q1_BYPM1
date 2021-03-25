@@ -1,6 +1,6 @@
 // eslint-disable-next-line max-len
 /* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role,jsx-a11y/aria-role,jsx-a11y/label-has-associated-control */
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,28 +8,24 @@ import DropDown from "../utils/DropDown";
 import { createMovie } from "../../redux/actions/actions";
 import ModalWindow from "../utils/ModalWindow";
 
-const AddMovie = (movie) => {
+const AddMovie = ({ onClose, movie }) => {
   // eslint-disable-next-line no-unused-vars
 
   const creationStatus = useSelector((state) => state.post_movie_desc);
   const errorBody = useSelector((state) => state.error_body);
 
-  const [values, setValues] = useState({
-    title: movie.movieToEdit === undefined ? "" : movie.movieToEdit.title,
-    release_date: movie.movieToEdit === undefined ? "" : movie.movieToEdit.release_date,
-    poster_path: movie.movieToEdit === undefined ? "" : movie.movieToEdit.poster_path,
-    genres: movie.movieToEdit === undefined ? "" : movie.movieToEdit.genres.join(),
-    overview: movie.movieToEdit === undefined ? "" : movie.movieToEdit.overview,
-    runtime: movie.movieToEdit === undefined ? "" : movie.movieToEdit.runtime,
-  });
+  const titleRef = useRef(movie.title);
+  const releaseDateRef = useRef(movie.release_date);
+  const posterPathRef = useRef(movie.poster_path);
+  const genresRef = useRef(
+    movie.genres === undefined ? "" : movie.genres.join(),
+  );
+  const overviewRef = useRef(movie.overview);
+  const runtimeRef = useRef(movie.runtime);
 
   const [showModal, setShowModal] = useState(false);
 
   const dispatch = useDispatch();
-
-  const set = (name) => ({ target: { value } }) => {
-    setValues((oldValues) => ({ ...oldValues, [name]: value }));
-  };
 
   const [checkedItems, setCheckedItems] = useState({});
 
@@ -52,16 +48,22 @@ const AddMovie = (movie) => {
       }
     });
 
-    values.genres = h;
-    values.runtime = Number.parseInt(values.runtime, 10);
-    dispatch(createMovie(values));
+    const movieToSave = {
+      title: titleRef.current.value,
+      release_date: releaseDateRef.current.value,
+      poster_path: posterPathRef.current.value,
+      overview: overviewRef.current.value,
+      runtime: Number.parseInt(runtimeRef.current.value, 10),
+      genres: h,
+    };
+    dispatch(createMovie(movieToSave));
     handleShowModal();
   };
 
   return (
     <>
       <section className="modal">
-        <span className="close_mark" onClick={movie.onClose}>
+        <span className="close_mark" onClick={onClose}>
           &#10005;
         </span>
         <h3>ADD MOVIE</h3>
@@ -74,8 +76,8 @@ const AddMovie = (movie) => {
                   type="text"
                   id="title"
                   placeholder="Enter movie title"
-                  onChange={set("title")}
-                  value={values.title}
+                  ref={titleRef}
+                  defaultValue={movie.title}
                 />
               </label>
             </section>
@@ -84,9 +86,9 @@ const AddMovie = (movie) => {
                 <span>RELEASE DATE</span>
                 <input
                   type="date"
-                  onChange={set("release_date")}
                   placeholder="dd-mm-yyyy"
-                  value={values.release_date}
+                  ref={releaseDateRef}
+                  defaultValue={movie.release_date}
                 />
               </label>
             </section>
@@ -95,9 +97,9 @@ const AddMovie = (movie) => {
                 <span>MOVIE URL</span>
                 <input
                   type="text"
-                  onChange={set("poster_path")}
                   placeholder="Enter movie URL"
-                  value={values.poster_path}
+                  ref={posterPathRef}
+                  defaultValue={movie.poster_path}
                 />
               </label>
             </section>
@@ -113,8 +115,8 @@ const AddMovie = (movie) => {
                 <input
                   type="text"
                   placeholder="Overview here"
-                  onChange={set("overview")}
-                  value={values.overview}
+                  ref={overviewRef}
+                  defaultValue={movie.overview}
                 />
               </label>
             </section>
@@ -124,8 +126,8 @@ const AddMovie = (movie) => {
                 <input
                   type="number"
                   placeholder="Runtime here"
-                  onChange={set("runtime")}
-                  value={values.runtime}
+                  ref={runtimeRef}
+                  defaultValue={movie.runtime}
                   min="0"
                   max="10000"
                 />
@@ -133,7 +135,7 @@ const AddMovie = (movie) => {
             </section>
           </form>
         </div>
-        <button role="search" type="button" onClick={movie.onClose}>
+        <button role="search" type="button" onClick={onClose}>
           Reset
         </button>
         <button role="reset" type="button" onClick={handleChange}>
@@ -153,12 +155,17 @@ const AddMovie = (movie) => {
 
 export default AddMovie;
 
-AddMovie.propTypes =
-{
+AddMovie.propTypes = {
   movie: PropTypes.shape({
     isShow: PropTypes.bool,
-    onClose: PropTypes.func,
+    release_date: PropTypes.string,
+    title: PropTypes.string,
+    poster_path: PropTypes.string,
+    overview: PropTypes.string,
+    runtime: PropTypes.number,
+    genres: PropTypes.arrayOf(PropTypes.string),
   }),
+  onClose: PropTypes.func.isRequired,
 };
 
 AddMovie.defaultProps = {
