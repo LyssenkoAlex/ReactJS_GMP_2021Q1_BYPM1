@@ -4,9 +4,8 @@ import ListOfGenres from "./lists/ListOfGenres";
 
 const Navigation = () => (
   <nav>
-    <ul className="menu">
+
       <ListOfGenres />
-    </ul>
     <section className="sort_section">
       <span className="sort_title">SORT BY</span>
       <div className="dropdown-container">

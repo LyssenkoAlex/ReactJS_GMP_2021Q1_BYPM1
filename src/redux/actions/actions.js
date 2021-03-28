@@ -85,3 +85,13 @@ export function deleteMovie(movie) {
     label: FETCH_POSTS,
   });
 }
+
+export function filterMovies(filter) {
+  return apiAction({
+    url: `http://localhost:4000/movies?filter=${filter}&offset=20`, // Mocked Backend Data.
+    method: "GET",
+    onSuccess: setPosts,
+    onFailure: () => console.log("Error while filter movies"), // Dummy error handler.
+    label: FETCH_POSTS,
+  });
+}

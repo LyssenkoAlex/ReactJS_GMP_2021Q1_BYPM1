@@ -28,7 +28,6 @@ const AddMovie = ({ onClose, movie, mode }) => {
   const [checkedItems, setCheckedItems] = useState(new Map());
 
   useEffect(() => {
-
     setCheckedItems(() => {
       const newState = new Map();
       genreList.forEach((x) => {
