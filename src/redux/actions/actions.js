@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { FETCH_POSTS, SET_POSTS, API, POST_MOVIE, DELETE_MOVIE } from "./types";
 
 export function setPosts(data) {
@@ -74,7 +75,6 @@ export function editMovie(movie) {
   });
 }
 
-
 export function deleteMovie(movie) {
   return apiAction({
     url: `http://localhost:4000/movies/${movie.id}`, // Mocked Backend Data.
@@ -86,9 +86,9 @@ export function deleteMovie(movie) {
   });
 }
 
-export function filterMovies(filter) {
+export function filterMovies(command, filter) {
   return apiAction({
-    url: `http://localhost:4000/movies?filter=${filter}&offset=20`, // Mocked Backend Data.
+    url: `http://localhost:4000/movies?${command}=${filter}&offset=20`, // Mocked Backend Data.
     method: "GET",
     onSuccess: setPosts,
     onFailure: () => console.log("Error while filter movies"), // Dummy error handler.

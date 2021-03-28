@@ -3,7 +3,6 @@ import { API } from "./actions/types";
 import { apiEnd, apiStart, apiError } from "./actions/api";
 
 const apiMiddleware = ({ dispatch }) => (next) => (action) => {
-
   next(action);
 
   if (action.type !== API) { // only apply middleware to actions of type API
@@ -26,11 +25,9 @@ const apiMiddleware = ({ dispatch }) => (next) => (action) => {
       [dataOrParams]: data,
     })
     .then((res) => {
-      console.log("onSuccess: ", res);
       dispatch(onSuccess(res));
     })
     .catch((error) => {
-      console.log("catch error: ", error);
       dispatch(apiError(error));
       // Original apiAction executor's error handler. e.g. Fn passed inside fetchPosts action.
       dispatch(onFailure(error));

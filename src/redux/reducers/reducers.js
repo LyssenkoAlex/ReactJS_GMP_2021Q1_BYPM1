@@ -3,7 +3,6 @@ import { SET_POSTS, API_START, API_END, FETCH_POSTS, POST_MOVIE, API_ERROR, DELE
 
 // eslint-disable-next-line consistent-return
 function reducer(state = { data: [], total_amount: 0, post_movie_desc: "", post_movie_status: 0, error_body: "", genres: [] }, action) {
-  console.log("reducer: ", action);
   let errorBody = "";
   let genreList = [];
 

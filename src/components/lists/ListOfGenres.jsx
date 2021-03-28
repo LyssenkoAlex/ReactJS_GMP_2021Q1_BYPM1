@@ -1,6 +1,5 @@
 /* eslint-disable quotes,implicit-arrow-linebreak */
 import React from "react";
-import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { fetchPosts, filterMovies } from "../../redux/actions/actions";
 
@@ -10,9 +9,8 @@ const ListOfGenres = () => {
   const dispatch = useDispatch();
 
   const handleFilter = (genre) => {
-    console.log('handle: ', genre);
     if (genre === 'ALL') dispatch(fetchPosts()); else {
-      dispatch(filterMovies(genre));
+      dispatch(filterMovies('filter', genre));
     }
   };
 
@@ -31,8 +29,3 @@ const ListOfGenres = () => {
 };
 
 export default ListOfGenres;
-
-ListOfGenres.propTypes = {
-  genre: PropTypes.string,
-  genres: PropTypes.arrayOf(PropTypes.string),
-};

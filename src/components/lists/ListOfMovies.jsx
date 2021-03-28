@@ -5,7 +5,7 @@ import MovieCard from "../MovieCard";
 import AddMovie from "../modals/AddMovie";
 import DeleteMovie from "../modals/DeleteMovie";
 
-const ListOfMovies = ({ data, isFetching, movieHandler }) => {
+const ListOfMovies = ({ data, movieHandler }) => {
   const [isShowEdit, setIsShowEdit] = useState(false);
   const [isShowDelete, setIsShowDelete] = useState(false);
   const [movieToEdit, setMovieToEdit] = useState(null);
@@ -42,7 +42,7 @@ const ListOfMovies = ({ data, isFetching, movieHandler }) => {
     <>
       {movieCards}
       {isShowEdit ? (
-        <AddMovie onClose={toggleShow} movie={movieToEdit} mode={'EDIT'} />
+        <AddMovie onClose={toggleShow} movie={movieToEdit} mode="EDIT" />
       ) : null}
       {isShowDelete ? (
         <DeleteMovie onClose={toggleShowDelete} movieToEdit={movieToEdit} />

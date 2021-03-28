@@ -1,18 +1,29 @@
 /* eslint-disable implicit-arrow-linebreak */
 import React from "react";
-import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { filterMovies } from "../../redux/actions/actions";
 
-const SORT_OPTIONS = ["Release date", "Vote Average", "Genres", "Vote count"];
+const SORT_OPTIONS = ["genre", "rating", "release date"];
 
-const SortOptions = () =>
-  SORT_OPTIONS.map((option) => (
+const SortOptions = () => {
+  const dispatch = useDispatch();
+
+  const handleSortOptions = (sort) => {
+    dispatch(filterMovies("sortBy", sort));
+  };
+
+  const sortList = SORT_OPTIONS.map((option) => (
     <option key={`option_${option}`} value={option}>
       {option}
     </option>
   ));
 
-export default SortOptions;
+  return (
+    <select className="select-css" onChange={(e) => handleSortOptions(e.target.value)}>
+      {sortList}
+    </select>
 
-SortOptions.propTypes = {
-  option: PropTypes.string,
+  );
 };
+
+export default SortOptions;
