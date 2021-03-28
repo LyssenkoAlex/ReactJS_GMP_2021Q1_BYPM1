@@ -9,8 +9,6 @@ const DropDown = ({ handleCheckBoxChange, checkedItems }) => {
     setShowList(!showList);
   };
 
-  console.log("DropDown checkedItems: ", checkedItems);
-
   const genresList = [...checkedItems.keys()].map((genre, index) => (
     <li key={`genre_${index}`}>
       <label>

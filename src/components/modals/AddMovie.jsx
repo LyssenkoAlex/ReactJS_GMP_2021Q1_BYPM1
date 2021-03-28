@@ -28,7 +28,7 @@ const AddMovie = ({ onClose, movie, mode }) => {
   const [checkedItems, setCheckedItems] = useState(new Map());
 
   useEffect(() => {
-    console.log("movie: ", movie.genres);
+
     setCheckedItems(() => {
       const newState = new Map();
       genreList.forEach((x) => {
@@ -49,22 +49,16 @@ const AddMovie = ({ onClose, movie, mode }) => {
   const handleChange = (event) => {
     event.preventDefault();
 
-    const fields = Object.keys(checkedItems);
-    const h = [];
-    fields.forEach((x) => {
-      if (checkedItems[x]) {
-        h.push(x);
-      }
-    });
-
     const movieToSave = {
+      id: movie.id,
       title: titleRef.current.value,
       release_date: releaseDateRef.current.value,
       poster_path: posterPathRef.current.value,
       overview: overviewRef.current.value,
       runtime: Number.parseInt(runtimeRef.current.value, 10),
-      genres: h,
+      genres: [...checkedItems.keys()].filter((x) => checkedItems.get(x)).map((x) => x),
     };
+
     if (mode !== undefined && mode === "EDIT") {
       dispatch(editMovie(movieToSave));
     } else {
@@ -173,6 +167,7 @@ export default AddMovie;
 
 AddMovie.propTypes = {
   movie: PropTypes.shape({
+    id: PropTypes.number,
     isShow: PropTypes.bool,
     release_date: PropTypes.string,
     title: PropTypes.string,
