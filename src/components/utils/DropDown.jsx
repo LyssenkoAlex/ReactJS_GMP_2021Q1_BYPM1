@@ -1,35 +1,25 @@
-/* eslint-disable jsx-a11y/label-has-associated-control,react/no-array-index-key */
+/* eslint-disable jsx-a11y/label-has-associated-control,react/no-array-index-key,max-len */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import MovieDetails from "../MovieDetails";
 
 const DropDown = ({ handleCheckBoxChange, checkedItems }) => {
   const [showList, setShowList] = useState(false);
-
-  const genres = [
-    { title: "Drama" },
-    { title: "Romance" },
-    { title: "Animation" },
-    { title: "Adventure" },
-    { title: "Family" },
-    { title: "Comedy" },
-    { title: "Fantasy" },
-    { title: "Science Fiction" },
-  ];
 
   const handleShowList = () => {
     setShowList(!showList);
   };
 
-  const genresList = genres.map((genre, index) => (
+  console.log("DropDown checkedItems: ", checkedItems);
+
+  const genresList = [...checkedItems.keys()].map((genre, index) => (
     <li key={`genre_${index}`}>
       <label>
-        {genre.title}
+        {genre}
         <input
           type="checkbox"
-          checked={checkedItems[genre.title] === undefined ? false : checkedItems[genre.title]}
-          value={genre.title}
-          name={genre.title}
+          checked={checkedItems.get(genre)}
+          value={genre}
+          name={genre}
           onChange={handleCheckBoxChange}
         />
       </label>
@@ -50,5 +40,5 @@ export default DropDown;
 
 DropDown.propTypes = {
   handleCheckBoxChange: PropTypes.func.isRequired,
-  checkedItems: PropTypes.object,
+  checkedItems: PropTypes.instanceOf(Map).isRequired,
 };

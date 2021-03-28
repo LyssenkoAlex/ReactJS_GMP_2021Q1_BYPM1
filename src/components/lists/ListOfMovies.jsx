@@ -42,7 +42,7 @@ const ListOfMovies = ({ data, isFetching, movieHandler }) => {
     <>
       {movieCards}
       {isShowEdit ? (
-        <AddMovie onClose={toggleShow} movie={movieToEdit} />
+        <AddMovie onClose={toggleShow} movie={movieToEdit} mode={'EDIT'} />
       ) : null}
       {isShowDelete ? (
         <DeleteMovie onClose={toggleShowDelete} movieToEdit={movieToEdit} />

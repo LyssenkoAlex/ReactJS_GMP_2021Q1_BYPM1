@@ -63,6 +63,18 @@ export function createMovie(movie) {
   });
 }
 
+export function editMovie(movie) {
+  return apiAction({
+    url: "http://localhost:4000/movies", // Mocked Backend Data.
+    method: "PUT",
+    data: movie,
+    onSuccess: postMovie,
+    onFailure: () => console.log("Error while editing movie"), // Dummy error handler.
+    label: FETCH_POSTS,
+  });
+}
+
+
 export function deleteMovie(movie) {
   return apiAction({
     url: `http://localhost:4000/movies/${movie.id}`, // Mocked Backend Data.
