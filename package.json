@@ -65,6 +65,8 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "formik": "^2.2.6",
+    "yup": "^0.32.9"
   }
 }
