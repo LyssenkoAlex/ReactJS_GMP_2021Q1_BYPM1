@@ -6,10 +6,7 @@ import { useSelector } from "react-redux";
 import Logo from "./utils/Logo";
 import imageNotFound from "../assets/img/image_not_found.jpg";
 import Navigation from "./Navigation";
-import MovieCounter from "./MovieCounter";
 import ListOfMovies from "./lists/ListOfMovies";
-import ErrorBoundary from "./error/ErrorBoundary";
-import Footer from "./Footer";
 
 const MovieDetails = ({ movieHandler }) => {
   const selectedMovie = useSelector((state) => state.selected_movie);

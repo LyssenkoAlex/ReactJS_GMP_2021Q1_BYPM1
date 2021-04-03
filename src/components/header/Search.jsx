@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import AddMovie from "../modals/AddMovie";
 import Logo from "../utils/Logo";
@@ -13,8 +13,6 @@ const Search = () => {
   const searchRole = "search";
   const dispatch = useDispatch();
   const [searchMovieItem, setSearchMovieItem] = useState("");
-  const images = useSelector((state) => state.data);
-  const isFetching = useSelector((state) => state.isFetching);
 
   const handleSearchButton = () => {
     dispatch(setSearchMovie(searchMovieItem));
@@ -50,7 +48,7 @@ const Search = () => {
               value={searchMovieItem}
               onChange={(e) => handleSearchMovie(e)}
             />
-            <Link to={SEARCH_PAGE.path}>
+            <Link to={`${SEARCH_PAGE.path}/${searchMovieItem}`}>
               <button role={searchRole} type="button" onClick={handleSearchButton}>
                 Search
               </button>
