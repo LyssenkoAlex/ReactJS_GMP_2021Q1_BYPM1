@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { FETCH_POSTS, SET_POSTS, API, POST_MOVIE, DELETE_MOVIE } from "./types";
+import { FETCH_POSTS, SET_POSTS, API, POST_MOVIE, DELETE_MOVIE, SET_SEARCH_MOVIE, SET_SELECTED_MOVIE } from "./types";
 
 export function setPosts(data) {
   return {
@@ -43,9 +43,9 @@ function apiAction({
   };
 }
 
-export function fetchPosts() {
+export function fetchPosts(searchString) {
   return apiAction({
-    url: "http://localhost:4000/movies?offset=20", // Mocked Backend Data.
+    url: `http://localhost:4000/movies?search=${searchString}&searchBy=title&offset=20`, // Mocked Backend Data.
     method: "GET",
     onSuccess: setPosts,
     onFailure: () => console.log("Error while loading posts"), // Dummy error handler.
@@ -94,4 +94,18 @@ export function filterMovies(command, filter) {
     onFailure: () => console.log("Error while filter movies"), // Dummy error handler.
     label: FETCH_POSTS,
   });
+}
+
+export function setSearchMovie(searchMovie) {
+  return {
+    type: SET_SEARCH_MOVIE,
+    payload: searchMovie,
+  };
+}
+
+export function setSelectedMovie(movie) {
+  return {
+    type: SET_SELECTED_MOVIE,
+    payload: movie,
+  };
 }

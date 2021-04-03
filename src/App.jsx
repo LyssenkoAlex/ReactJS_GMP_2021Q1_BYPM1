@@ -1,29 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./sass/style.scss";
-import Main from "./components/Main";
-import Header from "./components/header/Header";
+import { Route, Switch } from "react-router";
+import { MOVIE_DETAILS_PAGE, SEARCH_PAGE, WELCOME_PAGE } from "./components/utils/ROUTES";
 import Footer from "./components/Footer";
-import Navigation from "./components/Navigation";
-// eslint-disable-next-line import/no-named-as-default
 import ErrorBoundary from "./components/error/ErrorBoundary";
 
-const App = () => {
-  const [movieDetails, setMovieDetails] = useState(null);
+const App = () => (
+  <>
+    <Switch>
+      <Route exact path={WELCOME_PAGE.path} component={WELCOME_PAGE.component} />
+      <Route path={SEARCH_PAGE.path} component={SEARCH_PAGE.component} />
+      <Route path={`${MOVIE_DETAILS_PAGE.path}/:id`} component={MOVIE_DETAILS_PAGE.component} />
+    </Switch>
+    <ErrorBoundary>
+      <Footer />
+    </ErrorBoundary>
+  </>
 
-  const movieHandler = (movie) => {
-    setMovieDetails(movie);
-  };
-
-  return (
-    <>
-      <Header movieDetails={movieDetails} movieHandler={movieHandler} />
-      <Navigation />
-      <Main movieHandler={movieHandler} />
-      <ErrorBoundary>
-        <Footer />
-      </ErrorBoundary>
-    </>
-  );
-};
+);
 
 export default App;

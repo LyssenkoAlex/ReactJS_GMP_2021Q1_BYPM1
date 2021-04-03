@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import MovieCard from "../MovieCard";
 import AddMovie from "../modals/AddMovie";
 import DeleteMovie from "../modals/DeleteMovie";
+import MovieCounter from "../MovieCounter";
 
-const ListOfMovies = ({ data, movieHandler }) => {
+const ListOfMovies = ({ data }) => {
   const [isShowEdit, setIsShowEdit] = useState(false);
   const [isShowDelete, setIsShowDelete] = useState(false);
   const [movieToEdit, setMovieToEdit] = useState(null);
@@ -33,14 +34,18 @@ const ListOfMovies = ({ data, movieHandler }) => {
       deleteMovie={deleteMovie}
       editMovie={editMovie}
       key={movie.id}
-      movieHandler={movieHandler}
       onClose={toggleShow}
     />
   ));
 
   return (
     <>
+      <main>
+        <MovieCounter />
+        <section className="movies_wrapper">
       {movieCards}
+        </section>
+      </main>
       {isShowEdit ? (
         <AddMovie onClose={toggleShow} movie={movieToEdit} mode="EDIT" />
       ) : null}
@@ -54,7 +59,6 @@ const ListOfMovies = ({ data, movieHandler }) => {
 export default ListOfMovies;
 
 ListOfMovies.propTypes = {
-  movieHandler: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     release_date: PropTypes.string,

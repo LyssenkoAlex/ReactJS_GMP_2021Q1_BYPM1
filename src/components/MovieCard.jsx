@@ -1,8 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import imageNotFound from "../assets/img/image_not_found.jpg";
+import { MOVIE_DETAILS_PAGE } from "./utils/ROUTES";
+import { setSelectedMovie } from "../redux/actions/actions";
 
-const MovieCard = ({ movie, deleteMovie, editMovie, movieHandler }) => {
+const MovieCard = ({ movie, deleteMovie, editMovie }) => {
+  const dispatch = useDispatch();
+
   const addDefaultSrc = (e) => {
     e.target.src = imageNotFound;
   };
@@ -16,17 +22,19 @@ const MovieCard = ({ movie, deleteMovie, editMovie, movieHandler }) => {
   };
 
   const imgHandler = () => {
-    movieHandler(movie);
+    dispatch(setSelectedMovie(movie));
   };
 
   return (
     <section className="movie_container">
-      <img
-        onError={addDefaultSrc}
-        src={movie.poster_path}
-        alt="headline"
-        onClick={imgHandler}
-      />
+      <Link to={`${MOVIE_DETAILS_PAGE.path}/${movie.id}`}>
+        <img
+          onError={addDefaultSrc}
+          src={movie.poster_path}
+          alt="headline"
+          onClick={imgHandler}
+        />
+      </Link>
       <section className="movies_desc">
         <h3>{movie.title}</h3>
         <section className="second_line">
@@ -62,7 +70,6 @@ MovieCard.propTypes = {
   }),
   deleteMovie: PropTypes.func.isRequired,
   editMovie: PropTypes.func.isRequired,
-  movieHandler: PropTypes.func.isRequired,
 };
 
 MovieCard.defaultProps = {

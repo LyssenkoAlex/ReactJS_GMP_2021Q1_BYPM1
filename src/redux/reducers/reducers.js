@@ -1,10 +1,20 @@
 /* eslint-disable max-len */
-import { SET_POSTS, API_START, API_END, FETCH_POSTS, POST_MOVIE, API_ERROR, DELETE_MOVIE } from "../actions/types";
+import { SET_POSTS, API_START, API_END, FETCH_POSTS, POST_MOVIE, API_ERROR, DELETE_MOVIE, SET_SEARCH_MOVIE, SET_SELECTED_MOVIE } from "../actions/types";
 
 // eslint-disable-next-line consistent-return
-function reducer(state = { data: [], total_amount: 0, post_movie_desc: "", post_movie_status: 0, error_body: "", genres: [] }, action) {
+function reducer(state = { data: [],
+  total_amount: 0,
+  post_movie_desc: "",
+  post_movie_status: 0,
+  error_body: "",
+  genres: [],
+  search_movie: "",
+  selected_movie: {},
+
+}, action) {
   let errorBody = "";
   let genreList = [];
+  console.log("ACTION: ", action);
 
   switch (action.type) {
     case SET_POSTS:
@@ -35,6 +45,11 @@ function reducer(state = { data: [], total_amount: 0, post_movie_desc: "", post_
         };
       }
       break;
+    case SET_SEARCH_MOVIE:
+      return { ...state, search_movie: action.payload };
+    case SET_SELECTED_MOVIE:
+      return { ...state, selected_movie: action.payload };
+
     case API_ERROR:
 
       if (action.error.response !== undefined && action.error.response.data !== undefined

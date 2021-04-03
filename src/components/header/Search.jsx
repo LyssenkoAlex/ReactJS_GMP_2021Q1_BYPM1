@@ -1,12 +1,29 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import AddMovie from "../modals/AddMovie";
 import Logo from "../utils/Logo";
+import { fetchPosts, setSearchMovie } from "../../redux/actions/actions";
+import { SEARCH_PAGE } from "../utils/ROUTES";
 
 const Search = () => {
   const [show, setShow] = useState(false);
   const addMovieRole = "add_movie";
   const searchMovieRole = "search_movie";
   const searchRole = "search";
+  const dispatch = useDispatch();
+  const [searchMovieItem, setSearchMovieItem] = useState("");
+  const images = useSelector((state) => state.data);
+  const isFetching = useSelector((state) => state.isFetching);
+
+  const handleSearchButton = () => {
+    dispatch(setSearchMovie(searchMovieItem));
+    dispatch(fetchPosts(searchMovieItem));
+  };
+
+  const handleSearchMovie = (event) => {
+    setSearchMovieItem(event.target.value);
+  };
 
   return (
     <header>
@@ -30,10 +47,14 @@ const Search = () => {
               type="search"
               role={searchMovieRole}
               placeholder="What do you want to watch?"
+              value={searchMovieItem}
+              onChange={(e) => handleSearchMovie(e)}
             />
-            <button role={searchRole} type="button">
-              Search
-            </button>
+            <Link to={SEARCH_PAGE.path}>
+              <button role={searchRole} type="button" onClick={handleSearchButton}>
+                Search
+              </button>
+            </Link>
           </div>
         </section>
       </div>
