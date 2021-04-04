@@ -18,6 +18,7 @@ const apiMiddleware = ({ dispatch }) => (next) => (action) => {
   if (label) {
     dispatch(apiStart(label)); // Action to notify that the api call is starting.
   }
+  console.log('URL: ', url);
   axios
     .request({
       url,

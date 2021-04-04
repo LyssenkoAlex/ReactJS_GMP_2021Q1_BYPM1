@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import AddMovie from "../modals/AddMovie";
 import Logo from "../utils/Logo";
@@ -13,10 +13,14 @@ const Search = () => {
   const searchRole = "search";
   const dispatch = useDispatch();
   const [searchMovieItem, setSearchMovieItem] = useState("");
+  const images = useSelector((state) => state.data);
+
 
   const handleSearchButton = () => {
+    console.log("step1");
     dispatch(setSearchMovie(searchMovieItem));
     dispatch(fetchPosts(searchMovieItem));
+    console.log("images:", images.length)
   };
 
   const handleSearchMovie = (event) => {

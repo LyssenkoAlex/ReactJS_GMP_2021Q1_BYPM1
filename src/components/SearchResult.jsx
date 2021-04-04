@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { Redirect, useParams } from "react-router";
 import Navigation from "./Navigation";
-// eslint-disable-next-line import/no-named-as-default
 import ListOfMovies from "./lists/ListOfMovies";
 import Search from "./header/Search";
 import { fetchPosts } from "../redux/actions/actions";
+import MovieNotFound from "./MovieNotFound";
 
 const SearchResult = () => {
   const images = useSelector((state) => state.data);
@@ -19,11 +19,14 @@ const SearchResult = () => {
       dispatch(fetchPosts(query));
     }
   }, []);
+
   return (
     <>
       <Search />
       <Navigation />
-      <ListOfMovies data={images} />
+      <div>
+        {images.length > 0 ? <ListOfMovies data={images} /> : <MovieNotFound />}
+      </div>
     </>
   );
 };

@@ -48,7 +48,7 @@ export function fetchPosts(searchString) {
     url: `http://localhost:4000/movies?search=${searchString}&searchBy=title&offset=20`, // Mocked Backend Data.
     method: "GET",
     onSuccess: setPosts,
-    onFailure: () => console.log("Error while loading posts"), // Dummy error handler.
+    onFailure: () => console.log("Error while loading posts"),
     label: FETCH_POSTS,
   });
 }
