@@ -14,7 +14,6 @@ function reducer(state = { data: [],
 }, action) {
   let errorBody = "";
   let genreList = [];
-  console.log("ACTION: ", action);
 
   switch (action.type) {
     case SET_POSTS:

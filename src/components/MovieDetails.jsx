@@ -3,20 +3,17 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Logo from "./utils/Logo";
 import imageNotFound from "../assets/img/image_not_found.jpg";
 import Navigation from "./Navigation";
 import ListOfMovies from "./lists/ListOfMovies";
 
-const MovieDetails = ({ movieHandler }) => {
-  const selectedMovie = useSelector((state) => state.selected_movie);
+const MovieDetails = (props) => {
+  const selectedMovie = props.location.movie;
   const movieYear = new Date(selectedMovie.release_date).getFullYear();
   const movieDuration = `${selectedMovie.runtime} min`;
   const images = useSelector((state) => state.data);
-
-  const searchIconHandler = () => {
-    movieHandler(null);
-  };
 
   const addDefaultSrc = (e) => {
     e.target.src = imageNotFound;
@@ -27,9 +24,9 @@ const MovieDetails = ({ movieHandler }) => {
       <section className="movie_wrapper">
         <section className="header">
           <Logo />
-          <div onClick={searchIconHandler}>
+          <Link to="/">
             <FontAwesomeIcon className="search_icon" icon={faSearch} />
-          </div>
+          </Link>
         </section>
         <section className="movie_details">
           <img
@@ -61,7 +58,8 @@ const MovieDetails = ({ movieHandler }) => {
 export default MovieDetails;
 
 MovieDetails.propTypes = {
-  movieDetails: PropTypes.shape({
+  location: PropTypes.object,
+  movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     release_date: PropTypes.string,
     genres: PropTypes.arrayOf(PropTypes.string),
@@ -71,9 +69,8 @@ MovieDetails.propTypes = {
     vote_average: PropTypes.number,
     poster_path: PropTypes.string,
   }),
-  movieHandler: PropTypes.func.isRequired,
 };
 
 MovieDetails.defaultProps = {
-  movieDetails: null,
+  movie: {},
 };

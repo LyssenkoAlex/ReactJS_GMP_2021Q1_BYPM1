@@ -27,7 +27,7 @@ const MovieCard = ({ movie, deleteMovie, editMovie }) => {
 
   return (
     <section className="movie_container">
-      <Link to={`${MOVIE_DETAILS_PAGE.path}/${movie.id}`}>
+      <Link to={{ pathname: `${MOVIE_DETAILS_PAGE.path}/${movie.id}`, movie }}>
         <img
           onError={addDefaultSrc}
           src={movie.poster_path}
