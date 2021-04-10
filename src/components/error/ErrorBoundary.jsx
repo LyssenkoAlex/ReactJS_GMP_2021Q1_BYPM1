@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
-import React from "react";
-import { AppFallbackUI } from "./AppFallbackUI";
+import React from 'react';
+import { AppFallbackUI } from './AppFallbackUI';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

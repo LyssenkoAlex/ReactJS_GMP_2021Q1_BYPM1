@@ -1,23 +1,73 @@
 {
-  "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
   },
-  "extends": ["airbnb"],
+  "plugins": ["prettier"],
   "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/prop-types": 2,
+    "react/destructuring-assignment": 0,
+    "react/no-did-update-set-state": 0,
+    "react/prefer-stateless-function": 1,
+    "react/no-deprecated": 2,
+    "react/require-default-props": [0],
+    "react/jsx-props-no-spreading": [
+      "warn",
+      {
+        "custom": "ignore"
+      }
+    ],
+    "react/no-array-index-key": 0,
+    "no-underscore-dangle": 0,
+    "import/imports-first": ["error", "absolute-first"],
+    "import/newline-after-import": 2,
+    "import/prefer-default-export": 0,
+    "prettier/prettier": 2,
+    "jsx-a11y/media-has-caption": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/anchor-is-valid": 1,
+    "max-len": ["error", { "code": 120, "ignoreUrls": true }],
     "import/no-extraneous-dependencies": 0,
-    "react/jsx-filename-extension": 0,
-    "quotes": [2, "double", { "avoidEscape": true }],
-    "jsx-a11y/click-events-have-key-events": "off",
-    "object-curly-newline": "off",
+    "react/jsx-no-duplicate-props": ["error", { "ignoreCase": false }],
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/no-static-element-interactions": "off",
-    "operator-linebreak": "off",
     "jsx-a11y/no-interactive-element-to-noninteractive-role": "off",
     "jsx-a11y/aria-role": "off"
-
-
-  }
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true
+  },
+  "parser": "babel-eslint",
+  "overrides": [
+    {
+      "files": ["**/*.test.js"],
+      "env": {
+        "jest": true
+      },
+      "plugins": ["jest"],
+      "rules": {
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/valid-expect": "error"
+      }
+    }
+  ]
 }

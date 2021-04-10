@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const ModalWindow = ({ title, actionStatus, errorDesc, handleShowModal, showModal }) => {
   if (showModal) {
@@ -22,16 +22,15 @@ const ModalWindow = ({ title, actionStatus, errorDesc, handleShowModal, showModa
 
 export default ModalWindow;
 
-ModalWindow.propTypes =
-    {
-      title: PropTypes.string.isRequired,
-      actionStatus: PropTypes.string,
-      errorDesc: PropTypes.string,
-      handleShowModal: PropTypes.func.isRequired,
-      showModal: PropTypes.bool.isRequired,
-    };
+ModalWindow.propTypes = {
+  title: PropTypes.string.isRequired,
+  actionStatus: PropTypes.string,
+  errorDesc: PropTypes.string,
+  handleShowModal: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+};
 
 ModalWindow.defaultProps = {
-  actionStatus: "no data",
-  errorDesc: "",
+  actionStatus: 'no data',
+  errorDesc: '',
 };

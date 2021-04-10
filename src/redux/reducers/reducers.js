@@ -1,18 +1,31 @@
 /* eslint-disable max-len */
-import { SET_POSTS, API_START, API_END, FETCH_POSTS, POST_MOVIE, API_ERROR, DELETE_MOVIE, SET_SEARCH_MOVIE, SET_SELECTED_MOVIE } from "../actions/types";
+import {
+  SET_POSTS,
+  API_START,
+  API_END,
+  FETCH_POSTS,
+  POST_MOVIE,
+  API_ERROR,
+  DELETE_MOVIE,
+  SET_SEARCH_MOVIE,
+  SET_SELECTED_MOVIE,
+} from '../actions/types';
 
 // eslint-disable-next-line consistent-return
-function reducer(state = { data: [],
-  total_amount: 0,
-  post_movie_desc: "",
-  post_movie_status: 0,
-  error_body: "",
-  genres: [],
-  search_movie: "",
-  selected_movie: {},
-
-}, action) {
-  let errorBody = "";
+function reducer(
+  state = {
+    data: [],
+    total_amount: 0,
+    post_movie_desc: '',
+    post_movie_status: 0,
+    error_body: '',
+    genres: [],
+    search_movie: '',
+    selected_movie: {},
+  },
+  action,
+) {
+  let errorBody = '';
   let genreList = [];
 
   switch (action.type) {
@@ -23,10 +36,10 @@ function reducer(state = { data: [],
       return { ...state, post_movie_status: action.payload.status, post_movie_desc: action.payload.statusText };
     case DELETE_MOVIE:
       if (action.payload.status === 204) {
-        return { ...state, post_movie_status: action.payload.status, post_movie_desc: "Successfully deleted" };
+        return { ...state, post_movie_status: action.payload.status, post_movie_desc: 'Successfully deleted' };
       }
 
-      return { ...state, post_movie_status: action.payload.status, post_movie_desc: "error has happen" };
+      return { ...state, post_movie_status: action.payload.status, post_movie_desc: 'error has happen' };
 
     case API_START:
       if (action.payload === FETCH_POSTS) {
@@ -50,13 +63,15 @@ function reducer(state = { data: [],
       return { ...state, selected_movie: action.payload };
 
     case API_ERROR:
-
-      if (action.error.response !== undefined && action.error.response.data !== undefined
-          && action.error.response.data.messages !== undefined &&
-          action.error.response.data.messages.length > 0) {
+      if (
+        action.error.response !== undefined &&
+        action.error.response.data !== undefined &&
+        action.error.response.data.messages !== undefined &&
+        action.error.response.data.messages.length > 0
+      ) {
         errorBody = action.error.response.data.messages.join();
       }
-      return { ...state, post_movie_status: "400", post_movie_desc: "BAD request", error_body: errorBody };
+      return { ...state, post_movie_status: '400', post_movie_desc: 'BAD request', error_body: errorBody };
     default:
       return state;
   }

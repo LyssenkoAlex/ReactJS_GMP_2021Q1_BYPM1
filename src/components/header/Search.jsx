@@ -1,26 +1,22 @@
-import React, { useState } from "react";
-import {useDispatch, useSelector} from "react-redux";
-import { Link } from "react-router-dom";
-import AddMovie from "../modals/AddMovie";
-import Logo from "../utils/Logo";
-import { fetchPosts, setSearchMovie } from "../../redux/actions/actions";
-import { SEARCH_PAGE } from "../utils/ROUTES";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import AddMovie from '../modals/AddMovie';
+import Logo from '../utils/Logo';
+import { fetchPosts, setSearchMovie } from '../../redux/actions/actions';
+import { SEARCH_PAGE } from '../utils/ROUTES';
 
 const Search = () => {
   const [show, setShow] = useState(false);
-  const addMovieRole = "add_movie";
-  const searchMovieRole = "search_movie";
-  const searchRole = "search";
+  const addMovieRole = 'add_movie';
+  const searchMovieRole = 'search_movie';
+  const searchRole = 'search';
   const dispatch = useDispatch();
-  const [searchMovieItem, setSearchMovieItem] = useState("");
-  const images = useSelector((state) => state.data);
-
+  const [searchMovieItem, setSearchMovieItem] = useState('');
 
   const handleSearchButton = () => {
-    console.log("step1");
     dispatch(setSearchMovie(searchMovieItem));
     dispatch(fetchPosts(searchMovieItem));
-    console.log("images:", images.length)
   };
 
   const handleSearchMovie = (event) => {
@@ -32,12 +28,7 @@ const Search = () => {
       <div className="bcg_container">
         <section className="upper_pane">
           <Logo />
-          <button
-            className="add_movie_button"
-            role={addMovieRole}
-            type="button"
-            onClick={() => setShow(!show)}
-          >
+          <button className="add_movie_button" role={addMovieRole} type="button" onClick={() => setShow(!show)}>
             Add Movie
           </button>
         </section>

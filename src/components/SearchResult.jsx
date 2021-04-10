@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router";
-import Navigation from "./Navigation";
-import ListOfMovies from "./lists/ListOfMovies";
-import Search from "./header/Search";
-import { fetchPosts } from "../redux/actions/actions";
-import MovieNotFound from "./MovieNotFound";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+import Navigation from './Navigation';
+import ListOfMovies from './lists/ListOfMovies';
+import Search from './header/Search';
+import { fetchPosts } from '../redux/actions/actions';
+import MovieNotFound from './MovieNotFound';
 
 const SearchResult = () => {
   const images = useSelector((state) => state.data);
@@ -15,7 +15,7 @@ const SearchResult = () => {
   const { query } = useParams();
 
   useEffect(() => {
-    if (query !== "" && searchMovie === "") {
+    if (query !== undefined && query !== '' && searchMovie === '') {
       dispatch(fetchPosts(query));
     }
   }, []);
@@ -24,9 +24,7 @@ const SearchResult = () => {
     <>
       <Search />
       <Navigation />
-      <div>
-        {images.length > 0 ? <ListOfMovies data={images} /> : <MovieNotFound />}
-      </div>
+      <div>{images.length > 0 ? <ListOfMovies data={images} /> : <MovieNotFound />}</div>
     </>
   );
 };

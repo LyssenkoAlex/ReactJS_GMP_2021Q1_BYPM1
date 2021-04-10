@@ -1,13 +1,13 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
-import Logo from "./utils/Logo";
-import imageNotFound from "../assets/img/image_not_found.jpg";
-import Navigation from "./Navigation";
-import ListOfMovies from "./lists/ListOfMovies";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router';
+import Logo from './utils/Logo';
+import imageNotFound from '../assets/img/image_not_found.jpg';
+import Navigation from './Navigation';
+import ListOfMovies from './lists/ListOfMovies';
 
 const MovieDetails = () => {
   const location = useLocation();
@@ -30,11 +30,7 @@ const MovieDetails = () => {
           </Link>
         </section>
         <section className="movie_details">
-          <img
-            src={selectedMovie.poster_path}
-            alt="headline"
-            onError={addDefaultSrc}
-          />
+          <img src={selectedMovie.poster_path} alt="headline" onError={addDefaultSrc} />
           <section className="movies_desc">
             <div className="details_title">
               <h3>{selectedMovie.title}</h3>
@@ -57,4 +53,3 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
-

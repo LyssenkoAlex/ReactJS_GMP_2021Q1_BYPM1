@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Logo from "./utils/Logo";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Logo from './utils/Logo';
 
 const NotFound = () => (
   <>
@@ -9,8 +9,8 @@ const NotFound = () => (
       <h1>Page not found</h1>
       <h1>404</h1>
       <Link to="/">
-        <button role="reset">
-          Gp BACK TO HOME
+        <button role="reset" type="button">
+          Go BACK TO HOME
         </button>
       </Link>
     </section>

@@ -1,14 +1,14 @@
-import React from "react";
-import Main from "./Main";
-import Navigation from "./Navigation";
-// eslint-disable-next-line import/no-named-as-default
-import Search from "./header/Search";
+import React from 'react';
+import Navigation from './Navigation';
+import Search from './header/Search';
 
 const Welcome = () => (
   <>
     <Search />
     <Navigation />
-    <Main />
+    <section>
+      <h1>Start movie search</h1>
+    </section>
   </>
 );
 

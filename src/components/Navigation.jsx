@@ -1,10 +1,9 @@
-import React from "react";
-import ListOfOptions from "./lists/SortOptions";
-import ListOfGenres from "./lists/ListOfGenres";
+import React from 'react';
+import ListOfOptions from './lists/SortOptions';
+import ListOfGenres from './lists/ListOfGenres';
 
 const Navigation = () => (
   <nav>
-
     <ListOfGenres />
     <section className="sort_section">
       <span className="sort_title">SORT BY</span>

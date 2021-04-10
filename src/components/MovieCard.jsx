@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import imageNotFound from "../assets/img/image_not_found.jpg";
-import { MOVIE_DETAILS_PAGE } from "./utils/ROUTES";
-import { setSelectedMovie } from "../redux/actions/actions";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import imageNotFound from '../assets/img/image_not_found.jpg';
+import { MOVIE_DETAILS_PAGE } from './utils/ROUTES';
+import { setSelectedMovie } from '../redux/actions/actions';
 
 const MovieCard = ({ movie, deleteMovie, editMovie }) => {
   const dispatch = useDispatch();
@@ -28,17 +28,12 @@ const MovieCard = ({ movie, deleteMovie, editMovie }) => {
   return (
     <section className="movie_container">
       <Link to={{ pathname: `${MOVIE_DETAILS_PAGE.path}/${movie.id}`, movie }}>
-        <img
-          onError={addDefaultSrc}
-          src={movie.poster_path}
-          alt="headline"
-          onClick={imgHandler}
-        />
+        <img onError={addDefaultSrc} src={movie.poster_path} alt="headline" onClick={imgHandler} />
       </Link>
       <section className="movies_desc">
         <h3>{movie.title}</h3>
         <section className="second_line">
-          <h3>{movie.genres.join(", ")}</h3>
+          <h3>{movie.genres.join(', ')}</h3>
           <h4>{new Date(movie.release_date).getFullYear()}</h4>
         </section>
       </section>

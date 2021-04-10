@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteMovie } from "../../redux/actions/actions";
-import ModalWindow from "../utils/ModalWindow";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteMovie } from '../../redux/actions/actions';
+import ModalWindow from '../utils/ModalWindow';
 
 const DeleteMovie = ({ onClose, movieToEdit }) => {
   const dispatch = useDispatch();
