@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchAllPosts, filterMovies } from '../../redux/actions/actions';
+import { fetchAllMovies, filterMovies } from '../../redux/actions/actions';
 import { GENRE_FILTER } from '../utils/ROUTES';
 
 const genres = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
@@ -11,7 +11,7 @@ const ListOfGenres = () => {
   const dispatch = useDispatch();
 
   const handleFilter = (genre) => {
-    if (genre === 'All') dispatch(fetchAllPosts());
+    if (genre === 'All') dispatch(fetchAllMovies(0));
     else {
       dispatch(filterMovies(genre));
     }

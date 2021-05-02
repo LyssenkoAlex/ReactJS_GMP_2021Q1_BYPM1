@@ -11,7 +11,7 @@ import {
 import Footer from './components/Footer';
 import ErrorBoundary from './components/error/ErrorBoundary';
 import NotFound from './components/NotFound';
-import Welcome from './components/Welcome';
+import Welcome from './components/welcome/Welcome';
 import SearchResult from './components/SearchResult';
 import MovieDetails from './components/MovieDetails';
 import MovieNotFound from './components/MovieNotFound';

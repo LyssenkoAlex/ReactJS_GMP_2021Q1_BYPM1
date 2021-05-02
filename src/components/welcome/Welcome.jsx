@@ -1,6 +1,6 @@
 import React from 'react';
-import Navigation from './Navigation';
-import Search from './header/Search';
+import Navigation from '../Navigation';
+import Search from '../header/Search';
 
 const Welcome = () => (
   <>

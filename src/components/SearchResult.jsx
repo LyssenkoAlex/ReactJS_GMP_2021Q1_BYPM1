@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Navigation from './Navigation';
 import ListOfMovies from './lists/ListOfMovies';
 import Search from './header/Search';
-import { fetchPosts } from '../redux/actions/actions';
+import { fetchAllMovies, fetchPosts } from '../redux/actions/actions';
 import MovieNotFound from './MovieNotFound';
 
 const SearchResult = () => {
@@ -18,6 +18,8 @@ const SearchResult = () => {
     const search = router.pathname.split('/');
     if (search !== undefined && search.length === 3 && searchMovie === '') {
       dispatch(fetchPosts(search[2]));
+    } else if (search !== undefined && search.length === 2) {
+      dispatch(fetchAllMovies(0));
     }
   }, []);
 

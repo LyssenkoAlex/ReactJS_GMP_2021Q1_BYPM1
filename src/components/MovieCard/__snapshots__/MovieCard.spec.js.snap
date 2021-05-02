@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MovieCard  renders Welcome 1`] = `
+Array [
+  <section
+    className="movie_container"
+  >
+    <a
+      href="/movie_details/337167"
+      onClick={[Function]}
+    >
+      <img
+        alt="Fifty Shades Freed"
+        onClick={[Function]}
+        onError={[Function]}
+        role="img"
+        src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+      />
+    </a>
+    <section
+      className="movies_desc"
+    >
+      <h3>
+        Fifty Shades Freed
+      </h3>
+      <section
+        className="second_line"
+      >
+        <h3>
+          Drama, Romance
+        </h3>
+        <h4>
+          2018
+        </h4>
+      </section>
+    </section>
+    <div
+      className="dots"
+    >
+      <div
+        className="overlay"
+      >
+        <div
+          className="popup"
+        >
+          <span
+            className="close"
+          >
+            <div>
+              ×
+            </div>
+          </span>
+          <h5
+            onClick={[Function]}
+          >
+            Edit
+          </h5>
+          <h5
+            onClick={[Function]}
+          >
+            Delete
+          </h5>
+        </div>
+      </div>
+    </div>
+  </section>,
+  " ",
+]
+`;

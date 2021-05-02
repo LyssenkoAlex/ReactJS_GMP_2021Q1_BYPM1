@@ -4,7 +4,6 @@ import { apiEnd, apiStart, apiError } from './actions/api';
 
 const apiMiddleware = ({ dispatch }) => (next) => (action) => {
   next(action);
-
   if (action.type !== API) {
     // only apply middleware to actions of type API
     return;
@@ -27,6 +26,7 @@ const apiMiddleware = ({ dispatch }) => (next) => (action) => {
     })
     .then((res) => {
       dispatch(onSuccess(res));
+      return res;
     })
     .catch((error) => {
       dispatch(apiError(error));
@@ -36,6 +36,7 @@ const apiMiddleware = ({ dispatch }) => (next) => (action) => {
     .finally(() => {
       if (label) {
         // Action to notify that the api call has ended.
+
         dispatch(apiEnd(label));
       }
     });

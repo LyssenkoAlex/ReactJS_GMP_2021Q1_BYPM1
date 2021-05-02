@@ -1,0 +1,16 @@
+{
+  "title": "New movie",
+  "tagline": "New movie",
+  "vote_average": 6.1,
+  "vote_count": 1195,
+  "release_date": "2021-02-07",
+  "poster_path": "https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg",
+  "overview": "New movie New movie New movie New movie New movie New movie New movie New movie ",
+  "budget": 55000000,
+  "revenue": 136906000,
+  "genres": [
+    "Drama",
+    "Romance"
+  ],
+  "runtime": 63
+}

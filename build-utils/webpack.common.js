@@ -1,23 +1,25 @@
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
 
 module.exports = {
-  entry: path.resolve(__dirname, "..", "./src/index.js"),
+  entry: path.resolve(__dirname, '..', './src/index.js'),
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"],
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          "style-loader",
-          "css-loader",
+          'style-loader',
+          'css-loader',
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sassOptions: {
                 sourceMap: true,
@@ -31,26 +33,29 @@ module.exports = {
         // test: /\.(jpg|png|webp)$/,
         use: [
           {
-            loader: "url-loader", // Or `url-loader` or your other loader
+            loader: 'url-loader', // Or `url-loader` or your other loader
           },
         ],
       },
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"],
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
 
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "Advanced React with Webpack Setup",
-      template: path.resolve(__dirname, "..", "./src/index.html"),
+      title: 'Advanced React with Webpack Setup',
+      template: path.resolve(__dirname, '..', './src/index.html'),
     }),
   ],
   output: {
-    path: path.resolve(__dirname, "..", "dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, '..', 'dist'),
+    filename: 'bundle.js',
     publicPath: '/',
   },
 };

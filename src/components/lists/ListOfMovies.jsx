@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-indent,operator-linebreak,indent */
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import MovieCard from '../MovieCard';
+import MovieCard from '../MovieCard/MovieCard';
 import AddMovie from '../modals/AddMovie';
 import DeleteMovie from '../modals/DeleteMovie';
 import MovieCounter from '../MovieCounter';

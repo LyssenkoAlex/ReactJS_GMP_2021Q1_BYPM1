@@ -43,9 +43,9 @@ function apiAction({
   };
 }
 
-export function fetchAllPosts() {
+export function fetchAllMovies(offset) {
   return apiAction({
-    url: `http://localhost:4000/movies?limit=50`, // Mocked Backend Data.
+    url: `http://localhost:4000/movies?limit=21&offset=${offset}`, // Mocked Backend Data.
     method: 'GET',
     onSuccess: setPosts,
     onFailure: () => console.log('Error while loading posts'),

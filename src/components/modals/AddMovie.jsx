@@ -80,8 +80,8 @@ const AddMovie = ({ onClose, movie, mode }) => {
           <form onSubmit={formik.handleSubmit}>
             <section>
               <label htmlFor="title">
-                <span>TITLE</span>
-                <input type="text" name="title" value={formik.values.title} onChange={formik.handleChange} />
+                <span>Title</span>
+                <input type="text" id="title" name="title" value={formik.values.title} onChange={formik.handleChange} />
                 {formik.errors.title && formik.touched.title && <p>{formik.errors.title}</p>}
               </label>
             </section>
@@ -91,6 +91,7 @@ const AddMovie = ({ onClose, movie, mode }) => {
                 <input
                   type="date"
                   name="release_date"
+                  id="release_date"
                   value={formik.values.release_date}
                   onChange={formik.handleChange}
                 />
@@ -103,6 +104,7 @@ const AddMovie = ({ onClose, movie, mode }) => {
                 <input
                   type="text"
                   name="poster_path"
+                  id="poster_path"
                   value={formik.values.poster_path}
                   onChange={formik.handleChange}
                 />
@@ -118,14 +120,26 @@ const AddMovie = ({ onClose, movie, mode }) => {
             <section>
               <label htmlFor="overview">
                 <span>OVERVIEW</span>
-                <input type="text" name="overview" value={formik.values.overview} onChange={formik.handleChange} />
+                <input
+                  type="text"
+                  id="overview"
+                  name="overview"
+                  value={formik.values.overview}
+                  onChange={formik.handleChange}
+                />
                 {formik.errors.overview && formik.touched.overview && <p>{formik.errors.overview}</p>}
               </label>
             </section>
             <section>
               <label htmlFor="runtime">
                 <span>RUNTIME</span>
-                <input type="number" name="runtime" value={formik.values.runtime} onChange={formik.handleChange} />
+                <input
+                  type="number"
+                  id="runtime"
+                  name="runtime"
+                  value={formik.values.runtime}
+                  onChange={formik.handleChange}
+                />
                 {formik.errors.runtime && formik.touched.runtime && <p>{formik.errors.runtime}</p>}
               </label>
             </section>
