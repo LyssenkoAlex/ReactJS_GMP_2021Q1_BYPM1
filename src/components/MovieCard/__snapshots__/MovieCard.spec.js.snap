@@ -12,7 +12,6 @@ Array [
       <img
         alt="Fifty Shades Freed"
         onClick={[Function]}
-        onError={[Function]}
         role="img"
         src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
       />
