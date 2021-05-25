@@ -4,12 +4,9 @@
   "description": "ReactJS GMP [2021Q1 BYPM1]",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --config build-utils/webpack.config.js --env env=dev",
-    "build": "webpack serve --config build-utils/webpack.config.js --env env=prod",
-    "build:analyze": "npm run build -- --env addon=bundleanalyze",
-    "lint": "eslint ./src/**/*.{js,jsx}",
-    "format": "prettier --write ./src/**/*.{js,jsx,json}",
-    "test": "jest --coverage",
+    "start": "cross-env NODE_ENV=development node ./server --config webpack/webpack.server.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.client.js",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "repository": {
@@ -41,6 +38,7 @@
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.0.2",
     "dotenv-webpack": "^6.0.0",
+    "cross-env": "^6.0.3",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
@@ -65,7 +63,10 @@
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3"
+    "webpack-merge": "^5.7.3",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-hot-server-middleware": "^0.6.1",
+    "mini-css-extract-plugin": "^0.9.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
